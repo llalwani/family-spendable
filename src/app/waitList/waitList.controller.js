@@ -1,22 +1,25 @@
 (function () {
-  'use strict';
+	'use strict';
 
-  angular
-    .module('app.waitList')
-    .controller('WaitListController', WaitListController);
+	angular
+		.module('app.waitList')
+		.controller('WaitListController', WaitListController);
 
-  WaitListController.$inject = ['$rootScope', 'itemService', 'user'];
+	WaitListController.$inject = ['$rootScope', '$scope', 'itemService', 'user'];
 
-  function WaitListController($rootScope, itemService, user) {
-    var vm = this;
+	function WaitListController($rootScope, $scope, itemService, user) {
+		var vm = this;
 
-    vm.user = user;
-    vm.shared = itemService.allUsers(user.uid);
-    vm.list = itemService.getListByUser(user.uid);
+		vm.user = user;
+		vm.shared = itemService.allUsers(user.uid);
+		vm.list = itemService.getListByUser(user.uid);
 
-    $rootScope.$on('logout', function () {
-      vm.list.$destroy();
-    });
-  }
+		itemService.syncProfile(user.uid, vm.user.facebook);
+
+
+		$rootScope.$on('logout', function () {
+			vm.list.$destroy();
+		});
+	}
 
 })();

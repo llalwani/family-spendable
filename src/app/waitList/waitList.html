@@ -9,9 +9,9 @@ Status: <span class="text-success">Online</span>
 
 <hr>
 <h3>Friends Lists</h3>
-<div ng-repeat="list in vm.shared">
-    <h4>{{list.$id}}'s Bucket List</h4>
-    <ul ng-repeat="item in list.list">
+<div ng-repeat="friend in vm.shared">
+    <h4>{{friend.profile.displayName}}'s Bucket List</h4>
+    <ul ng-repeat="item in friend.list">
         <li>{{item.name}}</li>
     </ul>
 </div>
