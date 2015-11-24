@@ -20,3 +20,14 @@
 [warn] 
 [debug] >>> HTTP REQUEST GET https://admin.firebase.com/account?token=XXX 
 [debug] <<< HTTP RESPONSE 200
+[debug] ----------------------------------------------------------------------
+[debug] Command:      c:\Program Files\nodejs\node.exe c:\Users\longe\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase init
+[debug] Platform:     win32
+[debug] Node Version: v4.1.2
+[debug] Time:         Mon Nov 23 2015 18:08:11 GMT-0800 (Pacific Standard Time)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[warn] !  Initializing in a directory with 4 files
+[warn] 
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/account?token=XXX 
+[debug] <<< HTTP RESPONSE 200

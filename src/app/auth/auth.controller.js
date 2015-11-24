@@ -13,7 +13,7 @@
 		vm.register = register;
 		vm.login = login;
 		vm.fbLogin = fbLogin;
-
+		
 		function fbLogin() {
 			
 		}

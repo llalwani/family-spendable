@@ -1,9 +1,10 @@
-(function() {
+(function () {
   'use strict';
 
   angular
     .module('app.landing')
-    .config(configFunction);
+    .config(configFunction)
+    .run(runFunction);
 
   configFunction.$inject = ['$routeProvider'];
 
@@ -11,6 +12,10 @@
     $routeProvider.when('/', {
       templateUrl: 'app/landing/landing.html'
     });
+  }
+
+  function runFunction($rootScope, $location) {
+   
   }
 
 })();

@@ -41,6 +41,8 @@
 					console.log("Authenticated successfully with payload:", authData);
 				}
 
+			}, {
+				scope: "public_profile,email,user_friends"
 			});
 		}
 
