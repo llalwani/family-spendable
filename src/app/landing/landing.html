@@ -1,12 +1,13 @@
 <div class="container">
-  <div class="starter-template">
-    <h1>Shared Bucket</h1>
-    <p class="lead">Inspiring each other to do what you should already have done.</p>
-    <a class="btn btn-lg btn-primary" href="#/register" role="button">Sign Up!</a>
-    <a class="btn btn-lg btn-positive" href="#/login" role="button">Login</a>
+	<div class="starter-template">
+		<h1>Shared Bucket</h1>
+		<p class="lead">Inspiring each other to do what you should already have done.</p>
+		<div ng-controller="AuthController as vm">
+			<a ng-click="vm.login()" role="button"><img src="https://i.stack.imgur.com/pZzc4.png" alt=""></a>
+		</div>
 
-  </div>
-<!--
+	</div>
+	<!--
   <div class="row">
     <div class="col-md-4">
       <h2>Ditch the clipboard</h2>
@@ -14,7 +15,7 @@
     </div>
     <div class="col-md-4">
       <h2>Get your voice back</h2>
-      <p>No need to yell every 5 minutes. You can text a party with just a tap.</p>
+      <p>No need to yell every 5 minutes. You can text a List with just a tap.</p>
     </div>
     <div class="col-md-4">
       <h2>Customers will love you</h2>

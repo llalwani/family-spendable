@@ -16,15 +16,15 @@
 
     ////////////
 
-    function sendTextMessage(party, parties) {
+    function sendTextMessage(List, Lists) {
       var newTextMessage = {
-        phoneNumber: party.phone,
-        size: party.size,
-        name: party.name
+        phoneNumber: List.phone,
+        size: List.size,
+        name: List.name
       };
       firebaseDataService.textMessages.push(newTextMessage);
-      party.notified = true;
-      parties.$save(party);
+      List.notified = true;
+      Lists.$save(List);
     }
   }
 

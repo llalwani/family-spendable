@@ -1,57 +1,64 @@
-(function() {
-  'use strict';
+(function () {
+	'use strict';
 
-  angular
-    .module('app.auth')
-    .factory('authService', authService);
+	angular
+		.module('app.auth')
+		.factory('authService', authService);
 
-  authService.$inject = ['$rootScope', '$firebaseAuth', 'firebaseDataService'];
+	authService.$inject = ['$rootScope', '$firebaseAuth', 'firebaseDataService'];
 
-  function authService($rootScope, $firebaseAuth, firebaseDataService) {
-    var firebaseAuthObject = $firebaseAuth(firebaseDataService.root);
+	function authService($rootScope, $firebaseAuth, firebaseDataService) {
+		var firebaseAuthObject = $firebaseAuth(firebaseDataService.root);
 
-    var currentUser;
+		var currentUser;
 
-    firebaseAuthObject.$onAuth(function(auth) {
-      currentUser = auth;
-    });
+		firebaseAuthObject.$onAuth(function (auth) {
+			currentUser = auth;
+		});
 
-    var service = {
-      firebaseAuthObject: firebaseAuthObject,
-      register: register,
-      login: login,
-      logout: logout,
-      isLoggedIn: isLoggedIn,
-      sendWelcomeEmail: sendWelcomeEmail
-    };
+		var service = {
+			firebaseAuthObject: firebaseAuthObject,
+			register: register,
+			login: login,
+			logout: logout,
+			isLoggedIn: isLoggedIn,
+			sendWelcomeEmail: sendWelcomeEmail
+		};
 
-    return service;
+		return service;
 
-    ////////////
+		////////////
 
-    function register(user) {
-      return firebaseAuthObject.$createUser(user);
-    }
+		function register(user) {
+			return firebaseAuthObject.$createUser(user);
+		}
 
-    function login(user) {
-      return firebaseAuthObject.$authWithPassword(user);
-    }
+		function login(user) {
+			return firebaseAuthObject.$authWithOAuthPopup("facebook", function (error, authData) {
+				if (error) {
+					console.log("Login Failed!", error);
+				} else {
+					console.log("Authenticated successfully with payload:", authData);
+				}
 
-    function logout() {
-      $rootScope.$broadcast('logout');
-      firebaseAuthObject.$unauth();
-    }
+			});
+		}
 
-    function isLoggedIn() {
-      return currentUser;
-    }
+		function logout() {
+			$rootScope.$broadcast('logout');
+			firebaseAuthObject.$unauth();
+		}
 
-    function sendWelcomeEmail(emailAddress) {
-      firebaseDataService.emails.push({
-        emailAddress: emailAddress
-      });
-    }
+		function isLoggedIn() {
+			return currentUser;
+		}
 
-  }
+		function sendWelcomeEmail(emailAddress) {
+			firebaseDataService.emails.push({
+				emailAddress: emailAddress
+			});
+		}
+
+	}
 
 })();

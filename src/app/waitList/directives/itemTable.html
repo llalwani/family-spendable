@@ -1,0 +1,26 @@
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Done?</th>
+        <th>Info</th>
+        <th>Notified?</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tr ng-repeat="item in vm.list">
+        <td>
+            <input ng-model="item.done" ng-change="vm.toggleDone(item)" type="checkbox">
+        </td>
+        <td>
+            <div><strong>{{ item.name }}</strong></div>
+            <div>{{ item.phone }}</div>
+        </td>
+        <td>
+            <div>{{ item.notified ? 'Yes' : 'No' }}</div>
+        </td>
+        <td>
+            <button ng-click="vm.sendTextMessage(item)" class="btn btn-success">Send SMS</button>
+            <button ng-click="vm.removeList(item)" class="btn btn-danger">Remove</button>
+        </td>
+    </tr>
+</table>

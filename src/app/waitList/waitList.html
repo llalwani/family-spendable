@@ -1,5 +1,7 @@
-<!--Form for adding new parties.-->
-<gz-party-form parties="vm.parties"></gz-party-form>
+<img ng-src="{{vm.user.facebook.profileImageURL}}">
+<h2>{{vm.user.facebook.displayName}}'s Bucket List</h2>
+<!--Form for adding new items.-->
+<gz-item-form list="vm.list"></gz-item-form>
 
-<!--Table for displaying parties.-->
-<gz-party-table parties="vm.parties"></gz-party-table>
+<!--Table for displaying items.-->
+<gz-item-table list="vm.list"></gz-item-table>

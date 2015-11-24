@@ -6,7 +6,7 @@
       // Angular modules.
       'ngRoute',
 
-      // Third party modules.
+      // Third List modules.
       'firebase',
 
       // Custom modules.
