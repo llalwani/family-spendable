@@ -1,13 +1,14 @@
-(function() {
-  'use strict';
+(function () {
+	'use strict';
 
-  angular
-    .module('app', [
+	angular
+		.module('app', [
       // Angular modules.
       'ngRoute',
 
       // Third List modules.
-      'firebase',
+      'firebase', 
+			'dndLists',
 
       // Custom modules.
       'app.auth',
@@ -16,25 +17,25 @@
       'app.layout',
       'app.waitList'
     ])
-    .config(configFunction)
-    .run(runFunction);
+		.config(configFunction)
+		.run(runFunction);
 
-  configFunction.$inject = ['$routeProvider'];
+	configFunction.$inject = ['$routeProvider'];
 
-  function configFunction($routeProvider) {
-    $routeProvider.otherwise({
-      redirectTo: '/'
-    });
-  }
+	function configFunction($routeProvider) {
+		$routeProvider.otherwise({
+			redirectTo: '/'
+		});
+	}
 
-  runFunction.$inject = ['$rootScope', '$location'];
+	runFunction.$inject = ['$rootScope', '$location'];
 
-  function runFunction($rootScope, $location) {
-    $rootScope.$on('$routeChangeError', function(event, next, previous, error) {
-      if (error === "AUTH_REQUIRED") {
-        $location.path('/');
-      }
-    });
-  }
+	function runFunction($rootScope, $location) {
+		$rootScope.$on('$routeChangeError', function (event, next, previous, error) {
+			if (error === "AUTH_REQUIRED") {
+				$location.path('/');
+			}
+		});
+	}
 
 })();
