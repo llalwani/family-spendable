@@ -9,30 +9,25 @@
 
 	function AuthController($location, authService) {
 		var vm = this;
-
-		vm.register = register;
+		//		vm.register = register;
 		vm.login = login;
-		vm.fbLogin = fbLogin;
-		
-		function fbLogin() {
-			
-		}
 
-		function register(user) {
-			return authService.register(user)
-				.then(function () {
-					return vm.login(user);
-				})
-				.then(function () {
-					return authService.sendWelcomeEmail(user.email);
-				})
-				.catch(function (error) {
-					vm.error = error;
-				});
-		}
+		//		function register(user) {
+		//			return authService.register(user)
+		//				.then(function () {
+		//					return vm.login(user);
+		//				
+		//				})
+		//				.then(function () {
+		//					return authService.sendWelcomeEmail(user.email);
+		//				})
+		//				.catch(function (error) {
+		//					vm.error = error;
+		//				});
+		//		}
 
-		function login(user) {
-			return authService.login(user)
+		function login() {
+			return authService.login()
 				.then(function (response) {
 					$location.path('/waitlist');
 					return response;

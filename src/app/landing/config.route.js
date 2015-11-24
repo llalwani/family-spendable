@@ -15,7 +15,7 @@
   }
 
   function runFunction($rootScope, $location) {
-   
+
   }
 
 })();

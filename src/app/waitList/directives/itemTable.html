@@ -19,8 +19,7 @@
             <div>{{ item.notified ? 'Yes' : 'No one' }}</div>
         </td>
         <td>
-            <button ng-click="vm.sendTextMessage(item)" class="btn btn-success">Send SMS</button>
-            <button ng-click="vm.removeItem(item)" class="btn btn-danger">Remove</button>
+            <button ng-click="vm.removeItem(item)" class="btn btn-danger">X</button>
         </td>
     </tr>
 </table>

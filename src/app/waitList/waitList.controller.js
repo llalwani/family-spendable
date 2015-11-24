@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -7,14 +7,14 @@
 
   WaitListController.$inject = ['$rootScope', 'itemService', 'user'];
 
-	function WaitListController($rootScope, itemService, user) {
+  function WaitListController($rootScope, itemService, user) {
     var vm = this;
-		
-		vm.user = user;
-		console.log(user);
+
+    vm.user = user;
+
     vm.list = itemService.getListByUser(user.uid);
 
-    $rootScope.$on('logout', function() {
+    $rootScope.$on('logout', function () {
       vm.list.$destroy();
     });
   }

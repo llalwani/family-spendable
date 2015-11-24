@@ -16,7 +16,7 @@
       emails: root.child('emails'),
       textMessages: root.child('textMessages')
     };
-
+console.log(service.users);
     return service;
   }
 
