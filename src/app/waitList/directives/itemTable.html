@@ -2,8 +2,8 @@
     <thead>
     <tr>
         <th>Done?</th>
-        <th>Info</th>
-        <th>Notified?</th>
+        <th>Name</th>
+        <th>Shared with</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -13,14 +13,14 @@
         </td>
         <td>
             <div><strong>{{ item.name }}</strong></div>
-            <div>{{ item.phone }}</div>
+            <div>{{ item.description }}</div>
         </td>
         <td>
-            <div>{{ item.notified ? 'Yes' : 'No' }}</div>
+            <div>{{ item.notified ? 'Yes' : 'No one' }}</div>
         </td>
         <td>
             <button ng-click="vm.sendTextMessage(item)" class="btn btn-success">Send SMS</button>
-            <button ng-click="vm.removeList(item)" class="btn btn-danger">Remove</button>
+            <button ng-click="vm.removeItem(item)" class="btn btn-danger">Remove</button>
         </td>
     </tr>
 </table>
