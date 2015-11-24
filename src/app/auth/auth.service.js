@@ -52,6 +52,7 @@
 		}
 
 		function isLoggedIn() {
+			console.log("Logged In");
 			return currentUser;
 		}
 

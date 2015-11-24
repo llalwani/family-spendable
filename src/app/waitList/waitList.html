@@ -9,7 +9,13 @@ Status: <span class="text-success">Online</span>
 
 <hr>
 <h3>Friends Lists</h3>
-<h4>Long Dao's Bucket List</h4>
+<div ng-repeat="list in vm.shared">
+    <h4>{{list.$id}}'s Bucket List</h4>
+    <ul ng-repeat="item in list.list">
+        <li>{{item.name}}</li>
+    </ul>
+</div>
+
 <h5>Activities</h5>
 <li>Jet Skiing</li>
 <li>Alpine Skiing</li>

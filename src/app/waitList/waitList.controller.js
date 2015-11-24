@@ -11,7 +11,7 @@
     var vm = this;
 
     vm.user = user;
-
+    vm.shared = itemService.allUsers(user.uid);
     vm.list = itemService.getListByUser(user.uid);
 
     $rootScope.$on('logout', function () {
