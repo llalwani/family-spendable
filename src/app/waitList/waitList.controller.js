@@ -13,7 +13,7 @@
 		vm.user = user;
 		vm.shared = itemService.allUsers(user.uid);
 		vm.list = itemService.getListByUser(user.uid);
-
+		
 		itemService.syncProfile(user.uid, vm.user.facebook);
 
 

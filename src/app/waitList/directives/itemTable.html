@@ -1,25 +1,56 @@
+<style>
+	.table li {
+		position: relative;
+	}
+	
+	.table .handle {
+		cursor: move;
+		position: absolute;
+		top: 10px;
+	}
+	
+	.table .name {
+		margin-left: 20px;
+	}
+</style>
+<ul class="table table-striped table-bordered" dnd-list="vm.list">
+
+	<li ng-repeat="item in vm.list" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
+		<div class="handle">:::</div>
+		<div class="name" dnd-nodrag>
+			<input type="text" ng-model="item.name" class="form-control input-sm">
+		</div>
+	</li>
+
+	<li class="dndPlaceholder">
+		Drop any <strong></strong> here
+	</li>
+
+</ul>
+
+
 <table class="table table-striped table-bordered">
-    <thead>
-    <tr>
-        <th>Done?</th>
-        <th>Name</th>
-        <th>Shared with</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tr ng-repeat="item in vm.list">
-        <td>
-            <input ng-model="item.done" ng-change="vm.toggleDone(item)" type="checkbox">
-        </td>
-        <td>
-            <div><strong>{{ item.name }}</strong></div>
-            <div>{{ item.description }}</div>
-        </td>
-        <td>
-            <div>{{ item.notified ? 'Yes' : 'No one' }}</div>
-        </td>
-        <td>
-            <button ng-click="vm.removeItem(item)" class="btn btn-danger">X</button>
-        </td>
-    </tr>
+	<thead>
+		<tr>
+			<th>Done?</th>
+			<th>Name</th>
+			<th>Shared with</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="item in vm.list">
+		<td>
+			<input ng-model="item.done" ng-change="vm.toggleDone(item)" type="checkbox">
+		</td>
+		<td>
+			<div><strong>{{ item.name }}</strong></div>
+			<div>{{ item.description }}</div>
+		</td>
+		<td>
+			<div>{{ item.notified ? 'Yes' : 'No one' }}</div>
+		</td>
+		<td>
+			<button ng-click="vm.removeItem(item)" class="btn btn-danger">X</button>
+		</td>
+	</tr>
 </table>
