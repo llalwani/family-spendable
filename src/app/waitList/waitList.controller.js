@@ -16,7 +16,6 @@
 		
 		itemService.syncProfile(user.uid, vm.user.facebook);
 
-
 		$rootScope.$on('logout', function () {
 			vm.list.$destroy();
 		});

@@ -14,6 +14,7 @@
 			Item: Item,
 			allUsers: allUsers,
 			getProfileByUser: getProfileByUser,
+			getStatusByUser: getStatusByUser,
 			syncProfile: syncProfile
 		};
 		console.log(service.allUsers());
@@ -41,10 +42,34 @@
 			return $firebaseObject(firebaseDataService.users.child(uid).child('profile'));
 		}
 
+		function getStatusByUser(uid) {
+			return $firebaseObject(firebaseDataService.users.child(uid).child('status'));
+		}
+
 		function syncProfile(uid, data) {
-			var profile = this.getProfileByUser(uid);
-			$.extend(profile, data);
-			profile.$save();
+			var profileRef = this.getProfileByUser(uid);
+//			var myConnectionsRef = this.getStatusByUser(uid);
+//			var lastOnlineRef = function () {
+//				return $firebaseObject(firebaseDataService.users.child(uid).child('lastOnline'));
+//			};
+//			var connectedRef = function () {
+//				return $firebaseObject(firebaseDataService.amOnline);
+//			};
+//			connectedRef().on('value', function (snap) {
+//				if (snap.val() === true) {
+//					// We're connected (or reconnected)! Do anything here that should happen only if online (or on reconnect)
+//					// add this device to my connections list
+//					// this value could contain info about the device or a timestamp too
+//					var con = myConnectionsRef().push(true);
+//					// when I disconnect, remove this device
+//					con.onDisconnect().remove();
+//					// when I disconnect, update the last time I was seen online
+//					lastOnlineRef().onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
+//				}
+//			});
+
+			$.extend(profileRef, data);
+			profileRef.$save();
 		}
 	}
 
