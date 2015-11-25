@@ -28,7 +28,7 @@
 
 		function Item() {
 			this.name = '';
-			this.phone = '';
+			this.scope = '';
 			this.size = '';
 			this.done = false;
 			this.notified = false;

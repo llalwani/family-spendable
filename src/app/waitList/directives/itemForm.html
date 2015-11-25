@@ -1,11 +1,60 @@
-<form ng-submit="vm.addItem()" class="form-inline List-form" role="form">
+<style>
+    /*
+    body {
+        background: red;
+    }
+    
+    .add-item {
+        padding: 5px;
+        background: white;
+    }
+*/
+
+</style>
+
+<form ng-submit="vm.addItem()" class="add-item form-inline List-form" role="form">
     <div class="form-group">
         <input ng-model="vm.newItem.name" type="text" class="form-control" placeholder="Item" required>
     </div>
-<!--
+
+    <!--
     <div class="form-group">
         <input ng-model="vm.newItem.description" type="text" class="form-control" placeholder="Description">
     </div>
 -->
+    <div class="form-group">
+        <div class="btn-group" role="group" aria-label="scope">
+            <div class="btn-group" >
+                <label class="btn btn-info" btn-radio="'oneMonth'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+                    1 month
+                </label>
+                <label class="btn btn-info" btn-radio="'sixMonths'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+                    6 months
+                </label>
+                <label class="btn btn-info" btn-radio="'oneYear'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+                    1 year
+                </label>
+                <label class="btn btn-info" btn-radio="'fiveYears'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+                    5 years
+                </label>
+                <label class="btn btn-info" btn-radio="'tenYears'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+                    10 years +
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-success" btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
+                Activity
+            </label>
+            <label class="btn btn-success" btn-radio="'accomplishment'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
+                Accomplishment
+            </label>
+            <label class="btn btn-success" btn-radio="'travelling'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
+                Travelling
+            </label>
+        </div>
+    </div>
     <button type="submit" class="btn btn-primary">Add Item</button>
 </form>

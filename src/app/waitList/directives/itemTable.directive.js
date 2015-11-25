@@ -25,7 +25,7 @@
 
 		vm.removeItem = removeItem;
 		vm.sendTextMessage = sendTextMessage;
-		vm.toggleDone = toggleDone;
+		vm.updateItem = updateItem;
 		vm.hover = hover;
 
 		function removeItem(item) {
@@ -36,7 +36,7 @@
 			textMessageService.sendTextMessage(item, vm.list);
 		}
 
-		function toggleDone(item) {
+		function updateItem(item) {
 			vm.list.$save(item);
 		}
 

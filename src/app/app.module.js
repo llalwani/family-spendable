@@ -7,8 +7,9 @@
       'ngRoute',
 
       // Third List modules.
-      'firebase', 
+      'firebase',
 			'dndLists',
+		'ui.bootstrap',
 
       // Custom modules.
       'app.auth',

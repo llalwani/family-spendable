@@ -43,6 +43,7 @@
 		background-color: #ddd;
 		min-height: 20px;
 	}
+
 </style>
 
 
@@ -52,9 +53,55 @@
 		<li class="list-group-item" ng-repeat="item in vm.list" ng-mouseenter="vm.hover(item)" ng-mouseleave="vm.hover(item)" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
 			<div class="handle">:::</div>
 			<div class="name" dnd-nodrag>
-				<input type="text" ng-model="item.name" class="form-control input-sm">
+				<div class="form-group">
+					<input type="text" ng-model="item.name" ng-change="vm.updateItem(item)" class="form-control input-sm">
+				</div>
+				<div class="form-group">
+					<div class="btn-group" role="group" aria-label="scope">
+						<div class="btn-group">
+							<label class="btn btn-info" btn-radio="'oneMonth'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								1 month
+							</label>
+							<label class="btn btn-info" btn-radio="'sixMonths'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								6 months
+							</label>
+							<label class="btn btn-info" btn-radio="'oneYear'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								1 year
+							</label>
+							<label class="btn btn-info" btn-radio="'fiveYears'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								5 years
+							</label>
+							<label class="btn btn-info" btn-radio="'tenYears'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								10 years +
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="btn-group" role="group" aria-label="scope">
+						<div class="btn-group">
+							<label class="btn btn-success" btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="item.type">
+								Activity
+							</label>
+							<label class="btn btn-success" btn-radio="'accomplishment'" ng-change="vm.updateItem(item)" ng-model="item.type">
+								Accomplishment
+							</label>
+							<label class="btn btn-success" btn-radio="'travelling'" ng-change="vm.updateItem(item)" ng-model="item.type">
+								Travelling
+							</label>
+						</div>
+					</div>
+				</div>
+				<input type="text" ng-model="item.type" ng-change="vm.updateItem(item)" class="form-control input-sm">
 				<button ng-show="item.showDelete" ng-click="vm.removeItem(item)" class="remove btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash icon-white"></i></button>
-
+				<!--
+				<label class="btn btn-success" btn-radio="'bill'" ng-change="vm.updateItem(item)" ng-model="item.test">
+					Insert New Bill <span class="glyphicon glyphicon-file"></span>
+				</label>
+				<label class="btn btn-success" btn-radio="'coin'" ng-change="vm.updateItem(item)" ng-model="item.test">
+					Insert New Coin <span class="glyphicon glyphicon-adjust"></span>
+				</label>
+-->
 			</div>
 		</li>
 		<li class="dndPlaceholder">
