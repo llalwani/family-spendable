@@ -10,8 +10,9 @@
 <h3>Friends Lists</h3>
 <div ng-repeat="friend in vm.shared">
 	<h4>{{friend.profile.displayName ? friend.profile.displayName : "Unnamed"}}'s Bucket List</h4>
-	<ul ng-repeat="item in friend.list">
-		<li>{{item.name}}</li>
+	Status: <span class="text-danger">Offline</span>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="item in friend.list">{{item.name}}</li>
 	</ul>
 </div>
 <!--
