@@ -3,17 +3,22 @@
 <!--Form for adding new items.-->
 <gz-item-form list="vm.list"></gz-item-form>
 
-<!--Table for displaying items.-->
-<gz-item-table list="vm.list"></gz-item-table>
+<div class="row">
+	<!--Table for displaying items.-->
+	<gz-item-table list="vm.list"></gz-item-table>
 
-<hr>
-<h3>Friends Lists</h3>
-<div ng-repeat="friend in vm.shared">
-	<h4>{{friend.profile.displayName ? friend.profile.displayName : "Unnamed"}}'s Bucket List</h4>
-	Status: <span class="text-danger">Offline</span>
-	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="item in friend.list">{{item.name}}</li>
-	</ul>
+	<div class="col-lg-6">
+		<h3>Friend Lists</h3>
+		<div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">
+			<span ng-show="friend.profile.displayName">
+			<img ng-src="{{friend.profile.profileImageURL}}">
+			<h4>{{friend.profile.displayName}}'s Bucket List</h4> Status: <span class="text-danger">Offline</span>
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="item in friend.list">{{item.name}}</li>
+			</ul>
+			</span>
+		</div>
+	</div>
 </div>
 <!--
 
