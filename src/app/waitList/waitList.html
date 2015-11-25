@@ -10,13 +10,22 @@
 	<div class="col-lg-6">
 		<h3>Friend Lists</h3>
 		<div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">
-			<span ng-show="friend.profile.displayName">
-			<img ng-src="{{friend.profile.profileImageURL}}">
-			<h4>{{friend.profile.displayName}}'s Bucket List</h4> Status: <span class="text-danger">Offline</span>
-			<ul class="list-group">
-				<li class="list-group-item" ng-repeat="item in friend.list">{{item.name}}</li>
-			</ul>
-			</span>
+			<div ng-show="friend.profile.displayName">
+				<div class="media">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" ng-src="{{friend.profile.profileImageURL}}">
+						</a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">{{friend.profile.displayName}}</h4> Status:
+						<span class="text-danger">Offline</span>
+					</div>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="item in friend.list">{{item.name}}</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
