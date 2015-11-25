@@ -49,7 +49,7 @@
 
 <div class="col-lg-6">
 	<ul class="list-group" dnd-list="vm.list">
-
+		An average of {{vm.stats.avgScope() | number:0}} months
 		<li class="list-group-item" ng-repeat="item in vm.list" ng-mouseenter="vm.hover(item)" ng-mouseleave="vm.hover(item)" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
 			<div class="handle">:::</div>
 			<div class="name" dnd-nodrag>
@@ -59,19 +59,19 @@
 				<div class="form-group">
 					<div class="btn-group" role="group" aria-label="scope">
 						<div class="btn-group">
-							<label class="btn btn-info" btn-radio="'oneMonth'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info" btn-radio="1" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								1 month
 							</label>
-							<label class="btn btn-info" btn-radio="'sixMonths'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info" btn-radio="6" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								6 months
 							</label>
-							<label class="btn btn-info" btn-radio="'oneYear'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info" btn-radio="12" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								1 year
 							</label>
-							<label class="btn btn-info" btn-radio="'fiveYears'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info" btn-radio="60" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								5 years
 							</label>
-							<label class="btn btn-info" btn-radio="'tenYears'" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info" btn-radio="120" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								10 years +
 							</label>
 						</div>
