@@ -43,56 +43,44 @@
 		background-color: #ddd;
 		min-height: 20px;
 	}
+	.inline-block {
+		display:inline-block;
+	}
 
 </style>
 
 
-<div class="col-lg-6">
+<div class="col-lg-4">
 	<ul class="list-group" dnd-list="vm.list">
+		<h4><span class="glyphicon glyphicon-sunglasses"></span> Activity </h4>
 		An average of {{vm.stats.avgScope() | number:0}} months
 		<li class="list-group-item" ng-repeat="item in vm.list" ng-mouseenter="vm.hover(item)" ng-mouseleave="vm.hover(item)" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
 			<div class="handle">:::</div>
 			<div class="name" dnd-nodrag>
-				<div class="form-group">
+				<div class="form-group inline-block">
 					<input type="text" ng-model="item.name" ng-change="vm.updateItem(item)" class="form-control input-sm">
 				</div>
-				<div class="form-group">
+				<div class="form-group inline-block">
 					<div class="btn-group" role="group" aria-label="scope">
 						<div class="btn-group">
-							<label class="btn btn-info" btn-radio="1" ng-change="vm.updateItem(item)" ng-model="item.scope">
-								1 month
+							<label class="btn btn-info btn-xs" btn-radio="1" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								1m
 							</label>
-							<label class="btn btn-info" btn-radio="6" ng-change="vm.updateItem(item)" ng-model="item.scope">
-								6 months
+							<label class="btn btn-info btn-xs" btn-radio="6" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								6m
 							</label>
-							<label class="btn btn-info" btn-radio="12" ng-change="vm.updateItem(item)" ng-model="item.scope">
-								1 year
+							<label class="btn btn-info btn-xs" btn-radio="12" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								1y
 							</label>
-							<label class="btn btn-info" btn-radio="60" ng-change="vm.updateItem(item)" ng-model="item.scope">
-								5 years
+							<label class="btn btn-info btn-xs" btn-radio="60" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								5y
 							</label>
-							<label class="btn btn-info" btn-radio="120" ng-change="vm.updateItem(item)" ng-model="item.scope">
-								10 years +
+							<label class="btn btn-info btn-xs" btn-radio="120" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								10y
 							</label>
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="btn-group" role="group" aria-label="scope">
-						<div class="btn-group">
-							<label class="btn btn-success" btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="item.type">
-								Activity
-							</label>
-							<label class="btn btn-success" btn-radio="'accomplishment'" ng-change="vm.updateItem(item)" ng-model="item.type">
-								Accomplishment
-							</label>
-							<label class="btn btn-success" btn-radio="'travelling'" ng-change="vm.updateItem(item)" ng-model="item.type">
-								Travelling
-							</label>
-						</div>
-					</div>
-				</div>
-				<input type="text" ng-model="item.type" ng-change="vm.updateItem(item)" class="form-control input-sm">
 				<button ng-show="item.showDelete" ng-click="vm.removeItem(item)" class="remove btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash icon-white"></i></button>
 				<!--
 				<label class="btn btn-success" btn-radio="'bill'" ng-change="vm.updateItem(item)" ng-model="item.test">
@@ -109,7 +97,100 @@
 		</li>
 	</ul>
 </div>
+<div class="col-lg-4">
+	<ul class="list-group" dnd-list="vm.list">
+		<h4><span class="glyphicon glyphicon-king"></span> Accomplishment </h4>
+		An average of {{vm.stats.avgScope() | number:0}} months
+		<li class="list-group-item" ng-repeat="item in vm.list" ng-mouseenter="vm.hover(item)" ng-mouseleave="vm.hover(item)" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
+			<div class="handle">:::</div>
+			<div class="name" dnd-nodrag>
+				<div class="form-group inline-block">
+					<input type="text" ng-model="item.name" ng-change="vm.updateItem(item)" class="form-control input-sm">
+				</div>
+				<div class="form-group inline-block">
+					<div class="btn-group" role="group" aria-label="scope">
+						<div class="btn-group">
+							<label class="btn btn-info btn-xs" btn-radio="1" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								1m
+							</label>
+							<label class="btn btn-info btn-xs" btn-radio="6" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								6m
+							</label>
+							<label class="btn btn-info btn-xs" btn-radio="12" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								1y
+							</label>
+							<label class="btn btn-info btn-xs" btn-radio="60" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								5y
+							</label>
+							<label class="btn btn-info btn-xs" btn-radio="120" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								10y
+							</label>
+						</div>
+					</div>
+				</div>
+				<button ng-show="item.showDelete" ng-click="vm.removeItem(item)" class="remove btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash icon-white"></i></button>
+				<!--
+<label class="btn btn-success" btn-radio="'bill'" ng-change="vm.updateItem(item)" ng-model="item.test">
+Insert New Bill <span class="glyphicon glyphicon-file"></span>
+</label>
+<label class="btn btn-success" btn-radio="'coin'" ng-change="vm.updateItem(item)" ng-model="item.test">
+Insert New Coin <span class="glyphicon glyphicon-adjust"></span>
+</label>
+-->
+			</div>
+		</li>
+		<li class="dndPlaceholder">
 
+		</li>
+	</ul>
+</div>
+<div class="col-lg-4">
+	<ul class="list-group" dnd-list="vm.list">
+		<h4><span class="glyphicon glyphicon-plane"></span> Traveling </h4>
+		An average of {{vm.stats.avgScope() | number:0}} months
+		<li class="list-group-item" ng-repeat="item in vm.list" ng-mouseenter="vm.hover(item)" ng-mouseleave="vm.hover(item)" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
+			<div class="handle">:::</div>
+			<div class="name" dnd-nodrag>
+				<div class="form-group inline-block">
+					<input type="text" ng-model="item.name" ng-change="vm.updateItem(item)" class="form-control input-sm">
+				</div>
+				<div class="form-group inline-block">
+					<div class="btn-group" role="group" aria-label="scope">
+						<div class="btn-group">
+							<label class="btn btn-info btn-xs" btn-radio="1" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								1m
+							</label>
+							<label class="btn btn-info btn-xs" btn-radio="6" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								6m
+							</label>
+							<label class="btn btn-info btn-xs" btn-radio="12" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								1y
+							</label>
+							<label class="btn btn-info btn-xs" btn-radio="60" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								5y
+							</label>
+							<label class="btn btn-info btn-xs" btn-radio="120" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								10y
+							</label>
+						</div>
+					</div>
+				</div>
+				<button ng-show="item.showDelete" ng-click="vm.removeItem(item)" class="remove btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash icon-white"></i></button>
+				<!--
+<label class="btn btn-success" btn-radio="'bill'" ng-change="vm.updateItem(item)" ng-model="item.test">
+Insert New Bill <span class="glyphicon glyphicon-file"></span>
+</label>
+<label class="btn btn-success" btn-radio="'coin'" ng-change="vm.updateItem(item)" ng-model="item.test">
+Insert New Coin <span class="glyphicon glyphicon-adjust"></span>
+</label>
+-->
+			</div>
+		</li>
+		<li class="dndPlaceholder">
+
+		</li>
+	</ul>
+</div>
 <!--
 
 <table class="table table-striped table-bordered">
