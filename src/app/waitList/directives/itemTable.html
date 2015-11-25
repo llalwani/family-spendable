@@ -46,10 +46,18 @@
 	.inline-block {
 		display:inline-block;
 	}
-
+	.center {
+		text-align: center;
+	}
 </style>
 
-
+<div class="col-lg-12">
+	<ul class="list-group" dnd-list="vm.list">
+		<h4 class="center"><span class="glyphicon glyphicon-list"></span> Unsorted </h4>
+		An average of {{vm.stats.avgScope() | number:0}} months
+	
+	</ul>
+</div>
 <div class="col-lg-4">
 	<ul class="list-group" dnd-list="vm.list">
 		<h4><span class="glyphicon glyphicon-sunglasses"></span> Activity </h4>
