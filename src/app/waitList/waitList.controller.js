@@ -14,7 +14,7 @@
 		vm.shared = itemService.allUsers(user.uid);
 		vm.list = itemService.getListByUser(user.uid);
 
-		console.log(vm.list);
+		console.log("User List", vm.list);
 		itemService.syncProfile(user.uid, vm.user.facebook);
 
 		$rootScope.$on('logout', function () {
