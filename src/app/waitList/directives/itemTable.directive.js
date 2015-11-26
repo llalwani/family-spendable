@@ -47,7 +47,7 @@
 		}
 
 		function stats() {
-			var list = ['type', 'scope'];
+			var list = ['activity', 'accomplishment', 'traveling', 'scope'];
 			var stats = {};
 			list.forEach(function (target) {
 				stats[target] = new getCount(target);
@@ -61,27 +61,27 @@
 			var count = 0,
 				total = 0;
 			vm.list.forEach(function (item) {
-				var attr = item[target];
+
 				console.log(attr);
 				if (target === 'scope') {
+					var attr = item[target];
 					if (!isNaN(attr)) {
 						count += attr;
 						total += 1;
 					}
 				} else {
-					if (target === 'type' && attr) {
-						count = {},
-							total = {};
-						count[attr] += 1;
-						total[attr] += 1;
+					var attr = item.type;
+					if (attr === target) {
+						count += 1;
 					}
+					total += 1;
 				}
 			});
-			//			var avg = count / total;
+			var avg = target === 'scope' ? count / total : count / total * 100;
 			//			return {
 			this.count = count || 0;
 			this.total = total || 0;
-			this.avg = count / total || 0;
+			this.avg = avg || 0;
 			//			}
 		}
 
