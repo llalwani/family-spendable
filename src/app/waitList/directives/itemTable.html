@@ -51,7 +51,7 @@
 
 <div class="col-lg-12">
 	<ul class="list-group" dnd-list="vm.list">
-		An average of {{vm.stats().scope.avg | number:0}} months. 
+		An average of {{vm.stats().scope.avg | number:0}} months  or {{vm.stats().scope.avg/12 | number:0}} years! 
 		Activity {{vm.stats().activity.avg | number:0}}% 
 		Accomplishment {{vm.stats().accomplishment.avg | number:0}}% 
 		Traveling {{vm.stats().traveling.avg | number:0}}%
