@@ -29,7 +29,6 @@
 		function login() {
 			return authService.login()
 				.then(function (response) {
-				console.log("login",response);
 					$location.path('/waitlist');
 					return response;
 				})
