@@ -27,17 +27,21 @@
 		vm.sendTextMessage = sendTextMessage;
 		vm.updateItem = updateItem;
 		vm.hover = hover;
-		vm.stats = {};
-		vm.stats.avgScope = function () {
-			var count = 0,
-				total = 0;
+		vm.stats = function () {
+			var count = ['scope', 'activity', 'accomplishment', 'travel'],
+				total = ['scope'];
 			vm.list.forEach(function (item) {
+				count.scope = !isNaN(item.scope) ? count.scope += item.scope : count.scope;
+				total.scope = !isNaN(item.scope) ? total.scope += 1 : total.scope;
 
-				count = !isNaN(item.scope) ? count += item.scope : count;
-				total = !isNaN(item.scope) ? total += 1 : total;
+				count.activity = !isNaN(item.scope) ? count.activity += item.scope : count.activity;
+				total.activity = !isNaN(item.scope) ? total.activity += 1 : total.activity;
 
 			});
-			return count/total;
+			var avgScope = total.scope ? count.scope / total.scope : 0;
+			return {
+				avgScope: avgScope
+			};
 		};
 
 		function removeItem(item) {
@@ -49,7 +53,6 @@
 		}
 
 		function updateItem(item) {
-			vm.stats.avgScope();
 			vm.list.$save(item);
 		}
 
