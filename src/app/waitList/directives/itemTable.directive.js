@@ -27,22 +27,7 @@
 		vm.sendTextMessage = sendTextMessage;
 		vm.updateItem = updateItem;
 		vm.hover = hover;
-		vm.stats = function () {
-			var count = ['scope', 'activity', 'accomplishment', 'travel'],
-				total = ['scope'];
-			vm.list.forEach(function (item) {
-				count.scope = !isNaN(item.scope) ? count.scope += item.scope : count.scope;
-				total.scope = !isNaN(item.scope) ? total.scope += 1 : total.scope;
-
-				count.activity = !isNaN(item.scope) ? count.activity += item.scope : count.activity;
-				total.activity = !isNaN(item.scope) ? total.activity += 1 : total.activity;
-
-			});
-			var avgScope = total.scope ? count.scope / total.scope : 0;
-			return {
-				avgScope: avgScope
-			};
-		};
+		vm.stats = stats;
 
 		function removeItem(item) {
 			vm.list.$remove(item);
@@ -60,6 +45,46 @@
 			// Shows/hides the delete button on hover
 			return item.showDelete = !item.showDelete;
 		}
+
+		function stats() {
+			var list = ['type', 'scope'];
+			var stats = {};
+			list.forEach(function (target) {
+				stats[target] = new getCount(target);
+			})
+
+			console.log(stats);
+			return stats;
+		}
+
+		function getCount(target) {
+			var count = 0,
+				total = 0;
+			vm.list.forEach(function (item) {
+				var attr = item[target];
+				console.log(attr);
+				if (target === 'scope') {
+					if (!isNaN(attr)) {
+						count += attr;
+						total += 1;
+					}
+				} else {
+					if (target === 'type' && attr) {
+						count = {},
+							total = {};
+						count[attr] += 1;
+						total[attr] += 1;
+					}
+				}
+			});
+			//			var avg = count / total;
+			//			return {
+			this.count = count || 0;
+			this.total = total || 0;
+			this.avg = count / total || 0;
+			//			}
+		}
+
 	}
 
 })();

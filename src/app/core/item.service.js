@@ -17,7 +17,7 @@
 			getStatusByUser: getStatusByUser,
 			syncProfile: syncProfile
 		};
-		console.log(service.allUsers());
+		console.log("All Users",service.allUsers());
 		return service;
 
 		////////////
