@@ -29,9 +29,9 @@
 		function Item() {
 			this.name = '';
 			this.scope = '';
-			this.size = '';
+			this.type = '';
 			this.done = false;
-			this.notified = false;
+			this.added = new Date();
 		}
 
 		function allUsers(uid) {
