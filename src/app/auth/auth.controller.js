@@ -26,8 +26,8 @@
 		//				});
 		//		}
 
-		function login() {
-			return authService.login()
+		function login(provider) {
+			return authService.login(provider)
 				.then(function (response) {
 					$location.path('/waitlist');
 					return response;

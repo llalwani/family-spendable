@@ -53,7 +53,6 @@
 				stats[target] = new getCount(target);
 			})
 
-			console.log(stats);
 			return stats;
 		}
 
@@ -62,7 +61,6 @@
 				total = 0;
 			vm.list.forEach(function (item) {
 
-				console.log(attr);
 				if (target === 'scope') {
 					var attr = item[target];
 					if (!isNaN(attr)) {

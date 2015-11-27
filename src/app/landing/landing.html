@@ -1,13 +1,22 @@
-<div class="container">
-	<div class="starter-template">
-		<h1>Codename: Shared Bucket</h1>
-		<p class="lead">Inspiring each other to do what you should already have done.</p>
-		<div ng-controller="AuthController as vm">
-			<a ng-click="vm.login()" role="button"><img src="https://i.stack.imgur.com/pZzc4.png" alt=""></a>
-		</div>
+<style>
+  .btn-login {
+    display: block;
+    width: 400px;
+    margin: auto;
+  }
 
-	</div>
-	<!--
+</style>
+<div class="container">
+  <div class="starter-template">
+    <h1>Codename: Shared Bucket</h1>
+    <p class="lead">Inspiring each other to do what you should already have done.</p>
+    <div ng-controller="AuthController as vm">
+      <a ng-click="vm.login('facebook')" role="button"><img src="https://i.stack.imgur.com/pZzc4.png" alt="" class="btn-login"></a>
+      <a ng-click="vm.login('google')" role="button"><img src="https://tctechcrunch2011.files.wordpress.com/2013/04/sign-in-with-google.png?w=400" alt="" class="btn-login"></a>
+    </div>
+
+  </div>
+  <!--
   <div class="row">
     <div class="col-md-4">
       <h2>Ditch the clipboard</h2>

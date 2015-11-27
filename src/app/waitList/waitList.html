@@ -1,11 +1,17 @@
+<style>
+	.capitalize {
+		text-transform: capitalize;
+	}
+
+</style>
 <div class="media">
 	<div class="media-left">
 		<a href="#">
-			<img class="media-object" ng-src="{{vm.user.facebook.profileImageURL}}">
+			<img class="media-object" width="100" ng-src="{{vm.user[vm.user.provider].profileImageURL}}">
 		</a>
 	</div>
 	<div class="media-body">
-		<h4 class="media-heading">{{vm.user.facebook.displayName}}'s Bucket List ({{vm.list.length}})</h4> Status:
+		<h4 class="media-heading">{{vm.user[vm.user.provider].displayName}}'s Bucket List ({{vm.list.length}})</h4> Status:
 		<span class="text-success">Online</span>
 	</div>
 </div>
@@ -16,25 +22,28 @@
 	<!--Table for displaying items.-->
 	<gz-item-table list="vm.list"></gz-item-table>
 </div>
-		<h3>Friend Lists</h3>
-		<div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">
-			<div ng-show="friend.profile.displayName && friend.profile.id !== vm.user.facebook.id">
-				<div class="media">
-					<div class="media-left">
-						<a href="#">
-							<img class="media-object" ng-src="{{friend.profile.profileImageURL}}">
-						</a>
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">{{friend.profile.displayName}}</h4> Status:
-						<span class="text-danger">Offline</span>
-					</div>
-				</div>
-				<ul class="list-group">
-					<li class="list-group-item" ng-repeat="item in friend.list">{{item.name}}</li>
-				</ul>
+<h3>Friend Lists</h3>
+<div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">
+	<div ng-show="friend.profile.displayName && friend.profile.id !== vm.user.facebook.id">
+		<div class="media">
+			<div class="media-left">
+				<a href="#">
+					<img class="media-object" ng-src="{{friend.profile.profileImageURL}}">
+				</a>
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">{{friend.profile.displayName}}</h4> Status:
+				<span class="text-danger">Offline</span>
 			</div>
 		</div>
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="item in friend.list">
+				<span ng-show="item.type" class="capitalize">({{item.type}}) </span> {{item.name}}
+				<span ng-show="item.scope"> within {{item.scope / 12 | number: 1}} years.</span>
+			</li>
+		</ul>
+	</div>
+</div>
 
 <!--
 

@@ -33,8 +33,8 @@
 			return firebaseAuthObject.$createUser(user);
 		}
 
-		function login(user) {
-			return firebaseAuthObject.$authWithOAuthPopup("facebook", function (error, authData) {
+		function login(provider) {
+			return firebaseAuthObject.$authWithOAuthPopup(provider, function (error, authData) {
 				if (error) {
 					console.log("Login Failed!", error);
 				} else {
