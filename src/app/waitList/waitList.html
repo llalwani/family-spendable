@@ -2,8 +2,13 @@
 	.capitalize {
 		text-transform: capitalize;
 	}
-
 </style>
+<div class="alert alert-dismissible alert-warning">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	<strong>Heads up!</strong> Activities are things you do only one time, whereas Accomplishments are something you work multiple times for. <br>
+	For example, "Finish a novel" is an Accomplishment, whereas "Start a novel" is an activity. "Snowboard down a double-black diamond trail" is an Accomplishment
+	while "Go Snowboarding" is an activity!
+</div>
 <div class="media">
 	<div class="media-left">
 		<a href="#">
@@ -38,8 +43,10 @@
 		</div>
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="item in friend.list">
-				<span ng-show="item.type" class="capitalize">({{item.type}}) </span> {{item.name}}
-				<span ng-show="item.scope"> within {{item.scope / 12 | number: 1}} years.</span>
+				<div ng-show="!item.private">
+					<span ng-show="item.type" class="capitalize">({{item.type}}) </span> {{item.name}}
+					<span ng-show="item.scope"> within {{item.scope / 12 | number: 1}} years.</span>
+				</div>
 			</li>
 		</ul>
 	</div>

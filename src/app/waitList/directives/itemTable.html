@@ -56,6 +56,8 @@
 		Accomplishment {{vm.stats().accomplishment.avg | number:0}}% 
 		Traveling {{vm.stats().traveling.avg | number:0}}%
 		Unsorted {{100 - vm.stats().activity.avg + vm.stats().accomplishment.avg + vm.stats().traveling.avg | number:0}}%
+	
+		
 		<li class="list-group-item" ng-repeat="item in vm.list" ng-mouseenter="vm.hover(item)" ng-mouseleave="vm.hover(item)" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
 			<div class="handle">:::</div>
 			<div class="name" dnd-nodrag>
@@ -80,6 +82,12 @@
 							<label class="btn btn-info btn-xs" btn-radio="120" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								10y
 							</label>
+							<label class="btn btn-info btn-xs" btn-radio="240" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								20y
+							</label>
+							<label class="btn btn-info btn-xs" btn-radio="600" ng-change="vm.updateItem(item)" ng-model="item.scope">
+								50y+
+							</label>
 						</div>
 					</div>
 				</div>
@@ -96,6 +104,16 @@
 								Travelling
 							</label>
 						</div>
+					</div>
+				</div>
+				<div class="form-group inline-block">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-default btn-xs" name="private" uib-btn-radio="false" ng-change="vm.updateItem(item)" ng-model="item.private"  activeClass="active">
+							<span class="fa fa-slideshare"></span> Shared
+						</label>
+						<label class="btn btn-default btn-xs" name="private" uib-btn-radio="true" ng-change="vm.updateItem(item)" ng-model="item.private">
+							<span class="fa fa-child"></span> Private
+						</label>
 					</div>
 				</div>
 				<button  ng-click="vm.removeItem(item)" class="remove btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash icon-white"></i></button>
