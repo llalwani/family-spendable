@@ -32,6 +32,7 @@
 			this.type = '';
 			this.done = false;
 			this.added = new Date();
+			this.private = false;
 		}
 
 		function allUsers(uid) {
