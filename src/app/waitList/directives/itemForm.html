@@ -12,11 +12,16 @@
 	.item-form {
 		margin: auto;
 	}
+	.input-name {
+		padding: 6px 16px !important;
+		font-size: 13px;
+		line-height: 1.846;
+	}
 </style>
-<li class="list-group-item">
-	<form ng-submit="vm.addItem()" class="add-item form-inline item-form" ng-mouseenter="vm.hoverForm()" ng-mouseleave="vm.hoverForm(1000)"role="form">
+<li class="list-group-item col-lg-12">
+	<form ng-submit="vm.addItem()" class="add-item form-inline item-form" ng-mouseenter="vm.formHover()" ng-mouseleave="vm.formLeave()"role="form">
 		<div class="name">
-        <input ng-model="vm.newItem.name" type="text" class="form-control input-xl" placeholder="Item Name" required>
+        <input ng-model="vm.newItem.name" type="text" class="input-xl col-lg-12 input-name" placeholder="Item Name" required>
 		</div>
     <!--
     <div class="form-group">
@@ -70,6 +75,6 @@
 				<span class="fa fa-child"></span> Private
 			</label>
 		</div>
-    <button type="submit" class="btn btn-primary">Add Item</button>
+    <button type="submit" class="btn btn-primary col-lg-12">Add Item</button>
 </form>
 </li>

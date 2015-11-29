@@ -22,23 +22,29 @@
 
 	function ItemFormController(itemService, $timeout) {
 		var vm = this;
+		var timer;
 
 		vm.newItem = new itemService.Item();
 		vm.addItem = addItem;
-		vm.hoverForm = hoverForm;
+		vm.formHover = formHover;
+		vm.formLeave = formLeave;
 
 		function addItem() {
 			vm.list.$add(vm.newItem);
 			vm.newItem = new itemService.Item();
 		}
 
-		function hoverForm(wait) {
-			wait = wait || 0;
-			$timeout(function () {
-				return vm.showForm = !vm.showForm;
-			}, wait);
-
+		function formHover() {
+			$timeout.cancel(timer);
+			return vm.showForm = true;
 		}
+		
+		function formLeave() {
+			timer = $timeout(function () {
+			return vm.showForm = false;
+			}, 1000);
+		}
+
 	}
 
 })();
