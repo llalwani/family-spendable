@@ -14,8 +14,8 @@
     });
   }
 
-  function runFunction($rootScope, $location) {
-
+  function runFunction($rootScope, $location, TITLE) {
+    $rootScope.title = TITLE;
   }
 
 })();
