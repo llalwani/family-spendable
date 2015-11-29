@@ -2,12 +2,12 @@
 	'use strict';
 
 	angular
-		.module('app.waitList')
+		.module('app.mainList')
 		.directive('gzItemForm', gzItemForm);
 
 	function gzItemForm() {
 		return {
-			templateUrl: 'app/waitList/directives/itemForm.html',
+			templateUrl: 'app/mainList/directives/itemForm.html',
 			restrict: 'E',
 			controller: ItemFormController,
 			controllerAs: 'vm',

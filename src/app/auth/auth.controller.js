@@ -29,7 +29,7 @@
 		function login(provider) {
 			return authService.login(provider)
 				.then(function (response) {
-					$location.path('/waitlist');
+					$location.path('/mainlist');
 					return response;
 				})
 				.catch(function (error) {

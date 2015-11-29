@@ -17,7 +17,7 @@
       'app.core',
       'app.landing',
       'app.layout',
-      'app.waitList'
+      'app.mainList'
     ])
 		.config(configFunction)
 		.run(runFunction);

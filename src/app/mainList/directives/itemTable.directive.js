@@ -2,12 +2,12 @@
 	'use strict';
 
 	angular
-		.module('app.waitList')
+		.module('app.mainList')
 		.directive('gzItemTable', gzItemTable);
 
 	function gzItemTable() {
 		return {
-			templateUrl: 'app/waitList/directives/itemTable.html',
+			templateUrl: 'app/mainList/directives/itemTable.html',
 			restrict: 'E',
 			controller: ItemTableController,
 			controllerAs: 'vm',

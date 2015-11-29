@@ -2,12 +2,12 @@
 	'use strict';
 
 	angular
-		.module('app.waitList')
-		.controller('WaitListController', WaitListController);
+		.module('app.mainList')
+		.controller('MainListController', MainListController);
 
-	WaitListController.$inject = ['$rootScope', '$scope', 'itemService', 'user'];
+	MainListController.$inject = ['$rootScope', '$scope', 'itemService', 'user'];
 
-	function WaitListController($rootScope, $scope, itemService, user) {
+	function MainListController($rootScope, $scope, itemService, user) {
 		var vm = this;
 
 		vm.user = user;
