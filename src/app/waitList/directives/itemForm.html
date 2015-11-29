@@ -1,17 +1,18 @@
 <style>
-    
-    body {
-			background: #F5F5F5;
-    }
-    /*
+	body {
+		background: #F5F5F5;
+	}
+	/*
     .add-item {
         padding: 5px;
         background: white;
     }
 */
+	
 	.item-form {
 		margin: auto;
 	}
+	
 	.input-name {
 		padding: 6px 16px !important;
 		font-size: 13px;
@@ -19,41 +20,41 @@
 	}
 </style>
 <li class="list-group-item col-lg-12">
-	<form ng-submit="vm.addItem()" class="add-item form-inline item-form" ng-mouseenter="vm.formHover()" ng-mouseleave="vm.formLeave()"role="form">
+	<form ng-submit="vm.addItem()" class="add-item form-inline item-form" ng-mouseenter="vm.formHover()" ng-mouseleave="vm.formLeave()" role="form">
 		<div class="name">
-        <input ng-model="vm.newItem.name" type="text" class="input-xl col-lg-12 input-name" placeholder="Item Name" required>
+			<input ng-model="vm.newItem.name" type="text" class="input-xl col-lg-12 input-name" placeholder="Item Name" required>
 		</div>
-    <!--
+		<!--
     <div class="form-group">
         <input ng-model="vm.newItem.description" type="text" class="form-control" placeholder="Description">
     </div>
 -->
-    <div ng-show="vm.showForm" class="form-group">
-        <div class="btn-group" role="group" aria-label="scope">
-            <div class="btn-group" >
-							<label class="btn btn-info btn-md" uib-btn-radio="1" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope" ng-required="true">
-                    1 month
-                </label>
-                <label class="btn btn-info btn-md" uib-btn-radio="6" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
-                    6 months
-                </label>
-                <label class="btn btn-info btn-md" uib-btn-radio="12" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
-                    1 year
-                </label>
-                <label class="btn btn-info btn-md" uib-btn-radio="60" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
-                    5 years
-                </label>
-                <label class="btn btn-info btn-md" uib-btn-radio="120" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
-                    10 years 
-                </label>
-							<label class="btn btn-info btn-md" uib-btn-radio="240" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
-								20 years
-							</label>
-							<label class="btn btn-info btn-md" uib-btn-radio="600" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
-								50 years +
-							</label>
-            </div>
-        </div>
+		<div ng-show="vm.showForm" class="form-group">
+			<div class="btn-group" role="group" aria-label="scope">
+				<div class="btn-group">
+					<label class="btn btn-info btn-md" uib-btn-radio="1" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope" ng-required="true">
+						1 month
+					</label>
+					<label class="btn btn-info btn-md" uib-btn-radio="6" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+						6 months
+					</label>
+					<label class="btn btn-info btn-md" uib-btn-radio="12" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+						1 year
+					</label>
+					<label class="btn btn-info btn-md" uib-btn-radio="60" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+						5 years
+					</label>
+					<label class="btn btn-info btn-md" uib-btn-radio="120" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+						10 years
+					</label>
+					<label class="btn btn-info btn-md" uib-btn-radio="240" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+						20 years
+					</label>
+					<label class="btn btn-info btn-md" uib-btn-radio="600" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+						50 years +
+					</label>
+				</div>
+			</div>
 			<div class="btn-group" data-toggle="buttons">
 				<label class="btn btn-success btn-md" uib-btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type" required>
 					<span class="glyphicon glyphicon-sunglasses"></span> Activity
@@ -65,16 +66,16 @@
 					<span class="glyphicon glyphicon-plane"></span> Traveling
 				</label>
 			</div>
-    </div>
-       
-		<div ng-show="vm.showForm" class="btn-group" data-toggle="buttons">
-			<label class="btn btn-default btn-md" name="private" uib-btn-radio="false" ng-change="vm.updateItem(item)" ng-model="vm.newItem.private"  activeClass="active">
-				<span class="fa fa-slideshare"></span> Shared
-			</label>
-			<label class="btn btn-default btn-md" name="private" uib-btn-radio="true" ng-change="vm.updateItem(item)" ng-model="vm.newItem.private">
-				<span class="fa fa-child"></span> Private
-			</label>
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-default btn-md" name="private" uib-btn-radio="false" ng-change="vm.updateItem(item)" ng-model="vm.newItem.private" activeClass="active">
+					<span class="fa fa-slideshare"></span> Shared
+				</label>
+				<label class="btn btn-default btn-md" name="private" uib-btn-radio="true" ng-change="vm.updateItem(item)" ng-model="vm.newItem.private">
+					<span class="fa fa-child"></span> Private
+				</label>
+			</div>
 		</div>
-    <button type="submit" class="btn btn-primary col-lg-12">Add Item</button>
-</form>
+
+		<button type="submit" class="btn btn-primary col-lg-12">Add Item</button>
+	</form>
 </li>
