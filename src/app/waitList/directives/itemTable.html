@@ -55,7 +55,7 @@
 		Activity {{vm.stats().activity.avg | number:0}}% 
 		Accomplishment {{vm.stats().accomplishment.avg | number:0}}% 
 		Traveling {{vm.stats().traveling.avg | number:0}}%
-		Unsorted {{100 - vm.stats().activity.avg + vm.stats().accomplishment.avg + vm.stats().traveling.avg | number:0}}%
+		Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%
 	
 		
 		<li class="list-group-item" ng-repeat="item in vm.list" ng-mouseenter="vm.hover(item)" ng-mouseleave="vm.hover(item)" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
