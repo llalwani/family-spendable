@@ -9,17 +9,27 @@
     }
 */
 	
-	.item-form {
+	#item-form .item-form {
 		margin: auto;
 	}
 	
-	.input-name {
+	#item-form .btn-group {
+		display: block;
+		margin: 10px auto;
+	}
+	
+	#item-form .input-name {
 		padding: 6px 16px !important;
 		font-size: 13px;
 		line-height: 1.846;
 	}
+	
+	#item-form .btn-submit {
+		margin: 10px 0;
+		display: block;
+	}
 </style>
-<li class="list-group-item col-lg-12">
+<li id="item-form" class="list-group-item col-lg-12">
 	<form ng-submit="vm.addItem()" class="add-item form-inline item-form" ng-mouseenter="vm.formHover()" ng-mouseleave="vm.formLeave()" role="form">
 		<div class="name">
 			<input ng-model="vm.newItem.name" type="text" class="input-xl col-lg-12 input-name" placeholder="Item Name" required>
@@ -30,7 +40,6 @@
     </div>
 -->
 		<div ng-show="vm.showForm" class="form-group">
-			<div class="btn-group" role="group" aria-label="scope">
 				<div class="btn-group">
 					<label class="btn btn-info btn-md" uib-btn-radio="1" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope" ng-required="true">
 						1 month
@@ -54,7 +63,6 @@
 						50 years +
 					</label>
 				</div>
-			</div>
 			<div class="btn-group" data-toggle="buttons">
 				<label class="btn btn-success btn-md" uib-btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type" required>
 					<span class="glyphicon glyphicon-sunglasses"></span> Activity
@@ -76,6 +84,6 @@
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary col-lg-12">Add Item</button>
+		<button type="submit" class="btn btn-primary btn-submit">Add Item</button>
 	</form>
 </li>
