@@ -46,6 +46,9 @@
 	.inline-block {
 		display: inline-block;
 	}
+	.name-block {
+		width: 240px;
+	}
 </style>
 
 
@@ -61,31 +64,31 @@
 		<li class="list-group-item" ng-repeat="item in vm.list" ng-mouseenter="vm.hover(item)" ng-mouseleave="vm.hover(item)" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
 			<div class="handle">:::</div>
 			<div class="name" dnd-nodrag>
-				<div class="form-group inline-block">
+				<div class="form-group inline-block name-block">
 					<input type="text" ng-model="item.name" ng-change="vm.updateItem(item)" class="form-control input-sm">
 				</div>
 				<div class="form-group inline-block">
 					<div class="btn-group" role="group" aria-label="scope">
 						<div class="btn-group">
-							<label class="btn btn-info btn-xs" btn-radio="1" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info btn-xs" uib-btn-radio="1" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								1m
 							</label>
-							<label class="btn btn-info btn-xs" btn-radio="6" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info btn-xs" uib-btn-radio="6" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								6m
 							</label>
-							<label class="btn btn-info btn-xs" btn-radio="12" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info btn-xs" uib-btn-radio="12" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								1y
 							</label>
-							<label class="btn btn-info btn-xs" btn-radio="60" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info btn-xs" uib-btn-radio="60" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								5y
 							</label>
-							<label class="btn btn-info btn-xs" btn-radio="120" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info btn-xs" uib-btn-radio="120" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								10y
 							</label>
-							<label class="btn btn-info btn-xs" btn-radio="240" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info btn-xs" uib-btn-radio="240" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								20y
 							</label>
-							<label class="btn btn-info btn-xs" btn-radio="600" ng-change="vm.updateItem(item)" ng-model="item.scope">
+							<label class="btn btn-info btn-xs" uib-btn-radio="600" ng-change="vm.updateItem(item)" ng-model="item.scope">
 								50y+
 							</label>
 						</div>
@@ -94,13 +97,13 @@
 				<div class="form-group inline-block">
 					<div class="btn-group" role="group" aria-label="scope">
 						<div class="btn-group">
-							<label class="btn btn-success btn-xs" btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="item.type">
+							<label class="btn btn-success btn-xs" uib-btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="item.type">
 								Activity
 							</label>
-							<label class="btn btn-success btn-xs" btn-radio="'accomplishment'" ng-change="vm.updateItem(item)" ng-model="item.type">
+							<label class="btn btn-success btn-xs" uib-btn-radio="'accomplishment'" ng-change="vm.updateItem(item)" ng-model="item.type">
 								Accomplishment
 							</label>
-							<label class="btn btn-success btn-xs" btn-radio="'traveling'" ng-change="vm.updateItem(item)" ng-model="item.type">
+							<label class="btn btn-success btn-xs" uib-btn-radio="'traveling'" ng-change="vm.updateItem(item)" ng-model="item.type">
 								Traveling
 							</label>
 						</div>

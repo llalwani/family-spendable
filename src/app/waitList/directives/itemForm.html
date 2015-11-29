@@ -1,9 +1,9 @@
 <style>
-    /*
-    body {
-        background: red;
-    }
     
+    body {
+			background: #F5F5F5;
+    }
+    /*
     .add-item {
         padding: 5px;
         background: white;
@@ -14,56 +14,55 @@
 	}
 </style>
 <li class="list-group-item">
-<form ng-submit="vm.addItem()" class="add-item form-inline item-form" role="form">
+	<form ng-submit="vm.addItem()" class="add-item form-inline item-form" ng-mouseenter="vm.hoverForm()" ng-mouseleave="vm.hoverForm(1000)"role="form">
 		<div class="name">
         <input ng-model="vm.newItem.name" type="text" class="form-control input-xl" placeholder="Item Name" required>
 		</div>
-
     <!--
     <div class="form-group">
         <input ng-model="vm.newItem.description" type="text" class="form-control" placeholder="Description">
     </div>
 -->
-    <div class="form-group">
+    <div ng-show="vm.showForm" class="form-group">
         <div class="btn-group" role="group" aria-label="scope">
             <div class="btn-group" >
-                <label class="btn btn-info btn-md" btn-radio="1" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+							<label class="btn btn-info btn-md" uib-btn-radio="1" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope" ng-required="true">
                     1 month
                 </label>
-                <label class="btn btn-info btn-md" btn-radio="6" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+                <label class="btn btn-info btn-md" uib-btn-radio="6" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
                     6 months
                 </label>
-                <label class="btn btn-info btn-md" btn-radio="12" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+                <label class="btn btn-info btn-md" uib-btn-radio="12" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
                     1 year
                 </label>
-                <label class="btn btn-info btn-md" btn-radio="60" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+                <label class="btn btn-info btn-md" uib-btn-radio="60" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
                     5 years
                 </label>
-                <label class="btn btn-info btn-md" btn-radio="120" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+                <label class="btn btn-info btn-md" uib-btn-radio="120" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
                     10 years 
                 </label>
-							<label class="btn btn-info btn-md" btn-radio="240" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+							<label class="btn btn-info btn-md" uib-btn-radio="240" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
 								20 years
 							</label>
-							<label class="btn btn-info btn-md" btn-radio="600" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
+							<label class="btn btn-info btn-md" uib-btn-radio="600" ng-change="vm.updateItem(item)" ng-model="vm.newItem.scope">
 								50 years +
 							</label>
             </div>
         </div>
 			<div class="btn-group" data-toggle="buttons">
-				<label class="btn btn-success btn-md" btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
+				<label class="btn btn-success btn-md" uib-btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type" required>
 					<span class="glyphicon glyphicon-sunglasses"></span> Activity
 				</label>
-				<label class="btn btn-success btn-md" btn-radio="'accomplishment'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
+				<label class="btn btn-success btn-md" uib-btn-radio="'accomplishment'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
 					<span class="glyphicon glyphicon-king"></span> Accomplishment
 				</label>
-				<label class="btn btn-success btn-md" btn-radio="'travelling'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
+				<label class="btn btn-success btn-md" uib-btn-radio="'travelling'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
 					<span class="glyphicon glyphicon-plane"></span> Traveling
 				</label>
 			</div>
     </div>
        
-		<div class="btn-group" data-toggle="buttons">
+		<div ng-show="vm.showForm" class="btn-group" data-toggle="buttons">
 			<label class="btn btn-default btn-md" name="private" uib-btn-radio="false" ng-change="vm.updateItem(item)" ng-model="vm.newItem.private"  activeClass="active">
 				<span class="fa fa-slideshare"></span> Shared
 			</label>
