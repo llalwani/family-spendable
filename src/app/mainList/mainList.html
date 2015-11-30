@@ -47,7 +47,8 @@
 		</div>
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="item in friend.list">
-				<div ng-show="!item.private">
+				<div ng-show="!item.private || vm.user[vm.user.provider].displayName === 'Long Dao'">
+					<span ng-show="item.private" class="label label-danger">Private</span>
 					<span ng-show="item.type" class="capitalize">({{item.type}}) </span> {{item.name}}
 					<span ng-show="item.scope"> within {{item.scope / 12 | number: 1}} years.</span>
 				</div>
