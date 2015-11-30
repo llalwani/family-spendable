@@ -15,26 +15,25 @@
 	<div class="media-body">
 		<h4 class="media-heading">{{vm.user[vm.user.provider].displayName}}'s Bucket List ({{vm.list.length}})</h4> Status:
 		<span class="text-success">Online</span>
+		<h5 ng-show="vm.list.length > 0">An average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}! Activity {{vm.stats().activity.avg | number:0}}% Accomplishment {{vm.stats().accomplishment.avg | number:0}}% Traveling {{vm.stats().traveling.avg | number:0}}% Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%</h5>
 	</div>
 </div>
 
-<div class="alert alert-dismissible alert-warning" ng-show="vm.list.length < 2">
+<div class="alert alert-dismissible alert-warning" ng-show="vm.list.length < 1">
 	<button type="button" class="close" data-dismiss="alert">×</button>
-	<strong>Alert!</strong> Activities are things you do only one time, whereas Accomplishments are something you work multiple times for. <br>
-	For example, "Finish a novel" is an Accomplishment, whereas "Start a novel" is an activity. "Snowboard down a double-black diamond trail" is an Accomplishment
-	while "Go Snowboarding" is an activity!
+	<strong>Tip!</strong> "Go Snowboarding" is an ACTIVITY (1 time action) and "Snowboard down a double-black diamond trail" is an ACCOMPLISHMENT.
 </div>
 <!--Form for adding new items.-->
 <gz-item-form list="vm.list"></gz-item-form>
-
+<hr>
 <div class="row">
 	<!--Table for displaying items.-->
 	<gz-item-table list="vm.list" update-profile="vm.updateProfile()" formatted-scope="vm.formattedScope"></gz-item-table>
 </div>
 <h3>Friend Lists</h3>
 <div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">
-	<div ng-show="friend.profile.displayName && friend.profile.id !== vm.user.facebook.id">
-		<div class="card media">
+	<div ng-show="friend.profile.displayName && friend.profile.id !== vm.user.facebook.id" class="card">
+		<div class="media">
 			<div class="media-left">
 				<a href="#">
 					<img class="media-object" width="100" ng-src="{{friend.profile.profileImageURL}}">
@@ -45,7 +44,7 @@
 				<span class="text-danger">Offline</span>
 			</div>
 		</div>
-		<ul class="card list-group">
+		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="item in friend.list">
 				<div ng-show="!item.private || vm.user[vm.user.provider].displayName === 'Long Dao'">
 					<span ng-show="item.private" class="label label-danger">Private</span>

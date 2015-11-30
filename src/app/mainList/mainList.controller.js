@@ -25,7 +25,9 @@
 		});
 		vm.profile = itemService.getProfileByUser(user.uid);
 		vm.updateProfile = updateProfile;
-
+		vm.stats = stats;
+		vm.formatScope = itemService.formatScope;
+		
 		console.log("Current User", vm.user);
 		console.log("User List", vm.list);
 		itemService.syncProfile(user.uid, vm.user[vm.user.provider]);
@@ -38,6 +40,43 @@
 			vm.profile.$save({
 				'listCount': 3
 			});
+		}
+
+		function stats() {
+			var list = ['activity', 'accomplishment', 'traveling', 'scope'];
+			var stats = {};
+			_.each(list, function (target) {
+				stats[target] = new getCount(target);
+			});
+
+			return stats;
+		}
+
+		function getCount(target) {
+			var count = 0,
+				total = 0;
+			_.each(vm.list, function (item) {
+
+				if (target === 'scope') {
+					var attr = item[target];
+					if (!isNaN(attr)) {
+						count += attr;
+						total += 1;
+					}
+				} else {
+					var attr = item.type;
+					if (attr === target) {
+						count += 1;
+					}
+					total += 1;
+				}
+			});
+			var avg = target === 'scope' ? count / total : count / total * 100;
+			//			return {
+			this.count = count || 0;
+			this.total = total || 0;
+			this.avg = avg || 0;
+			//			}
 		}
 	}
 
