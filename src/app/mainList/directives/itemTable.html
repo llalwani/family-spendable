@@ -64,7 +64,7 @@
 
 <div class="col-lg-12">
 	<ul class="list-group" dnd-list="vm.list">
-		An average of {{vm.stats().scope.avg | number:0}} months or {{vm.stats().scope.avg/12 | number:0}} years! Activity {{vm.stats().activity.avg | number:0}}% Accomplishment {{vm.stats().accomplishment.avg | number:0}}% Traveling {{vm.stats().traveling.avg | number:0}}% Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%
+		An average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}! Activity {{vm.stats().activity.avg | number:0}}% Accomplishment {{vm.stats().accomplishment.avg | number:0}}% Traveling {{vm.stats().traveling.avg | number:0}}% Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%
 
 
 		<li class="list-group-item" ng-repeat="item in vm.list" ng-mouseenter="vm.hover(item)" ng-mouseleave="vm.hover(item)" dnd-draggable="item" dnd-moved="vm.list.splice($index, 1)" dnd-effect-allowed="move">
@@ -74,7 +74,7 @@
 					<input type="text" ng-model="item.name" ng-change="vm.updateItem(item)" class="form-control input-sm">
 				</div>
 				<div ng-show="!item.hover" class="inline-block">
-					<button class="btn btn-info btn-xs">{{vm.formatScope(item.scope)}}</button>
+					<button class="btn btn-info btn-xs">{{vm.formatScope(item.scope,'M','Y')}}</button>
 					<button class="btn btn-success btn-xs" >{{item.type}}</button>
 				</div>
 				<div ng-show="item.hover" class="inline-block">

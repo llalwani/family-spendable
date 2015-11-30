@@ -87,9 +87,11 @@
 			$firebaseObject(firebaseDataService.users.child(uid).child('profile').child('listCount')).$set(3);
 			profileRef.$save();
 		}
-		
-		function formatScope (scope) {
-			return scope + 'M';
+
+		function formatScope(scope, month, year) {
+			//add a "plus sign" to indicate 50 or more years
+			year = scope === 600 ? year + '+' : year;
+			return scope >= 12 ? Math.floor(scope / 12) + year :  Math.floor(scope) + month;
 		}
 	}
 
