@@ -5,9 +5,9 @@
 		.module('app.core')
 		.factory('itemService', itemService);
 
-	itemService.$inject = ['$firebaseArray', '$firebaseObject', 'firebaseDataService'];
+	itemService.$inject = ['$firebaseArray', '$firebaseObject', 'firebaseDataService','_'];
 
-	function itemService($firebaseArray, $firebaseObject, firebaseDataService) {
+	function itemService($firebaseArray, $firebaseObject, firebaseDataService,_) {
 
 		var service = {
 			getListByUser: getListByUser,
@@ -69,7 +69,7 @@
 //				}
 //			});
 
-			$.extend(profileRef, data);
+			_.extend(profileRef, data);
 			profileRef.$save();
 		}
 	}

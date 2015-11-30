@@ -18,9 +18,9 @@
 		};
 	}
 
-	ItemTableController.$inject = ['textMessageService'];
+	ItemTableController.$inject = ['_'];
 
-	function ItemTableController(textMessageService) {
+	function ItemTableController(_) {
 		var vm = this;
 
 		vm.removeItem = removeItem;
@@ -49,9 +49,9 @@
 		function stats() {
 			var list = ['activity', 'accomplishment', 'traveling', 'scope'];
 			var stats = {};
-			list.forEach(function (target) {
+			_.each(list, function (target) {
 				stats[target] = new getCount(target);
-			})
+			});
 
 			return stats;
 		}
@@ -59,7 +59,7 @@
 		function getCount(target) {
 			var count = 0,
 				total = 0;
-			vm.list.forEach(function (item) {
+			_.each(vm.list, function (item) {
 
 				if (target === 'scope') {
 					var attr = item[target];
