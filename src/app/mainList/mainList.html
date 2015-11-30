@@ -26,6 +26,8 @@
 	<!--Table for displaying items.-->
 	<gz-item-table list="vm.list" update-profile="vm.updateProfile()" formatted-scope="vm.formattedScope"></gz-item-table>
 </div>
+
+<!--Move this to its own section-->
 <h3>Friend Lists</h3>
 <div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">
 	<div ng-show="friend.profile.displayName && friend.profile.id !== vm.user.facebook.id" class="card">
@@ -36,7 +38,7 @@
 				</a>
 			</div>
 			<div class="media-body">
-				<h4 class="media-heading">{{friend.profile.displayName}} {{_.size([1, 2, 3]);}} test({{_.size(friend.list)}})</h4> Status:
+				<h4 class="media-heading">{{friend.profile.displayName}}</h4> Status:
 				<span class="text-danger">Offline</span>
 			</div>
 		</div>
