@@ -29,7 +29,7 @@
 
 <div class="row">
 	<!--Table for displaying items.-->
-	<gz-item-table list="vm.list" update-profile="vm.updateProfile()"></gz-item-table>
+	<gz-item-table list="vm.list" update-profile="vm.updateProfile()" formatted-scope="vm.formattedScope"></gz-item-table>
 </div>
 <h3>Friend Lists</h3>
 <div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">

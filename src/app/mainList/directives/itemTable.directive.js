@@ -13,8 +13,7 @@
 			controllerAs: 'vm',
 			bindToController: true,
 			scope: {
-				list: '=',
-				updateProfile: '&'
+				list: '='
 			}
 		};
 	}
@@ -29,7 +28,8 @@
 		vm.updateItem = updateItem;
 		vm.hover = hover;
 		vm.stats = stats;
-
+		vm.formatScope = itemService.formatScope;
+		
 		function removeItem(item) {
 			vm.list.$remove(item);
 		}

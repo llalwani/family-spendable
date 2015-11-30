@@ -16,7 +16,8 @@
 			getProfileByUser: getProfileByUser,
 			getStatusByUser: getStatusByUser,
 			syncProfile: syncProfile,
-			updateProfile: updateProfile
+			updateProfile: updateProfile,
+			formatScope: formatScope
 		};
 		console.log("All Users", service.allUsers());
 		return service;
@@ -85,6 +86,10 @@
 			var profileRef = this.getProfileByUser(uid);
 			$firebaseObject(firebaseDataService.users.child(uid).child('profile').child('listCount')).$set(3);
 			profileRef.$save();
+		}
+		
+		function formatScope (scope) {
+			return scope + 'M';
 		}
 	}
 
