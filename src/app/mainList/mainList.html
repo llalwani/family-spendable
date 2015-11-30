@@ -6,7 +6,7 @@
 		color: hsla(36,100%,20%,1);
 	}
 </style>
-<div class="media">
+<div class="card media">
 	<div class="media-left">
 		<a href="#">
 			<img class="media-object" width="100" ng-src="{{vm.user[vm.user.provider].profileImageURL}}">
@@ -34,7 +34,7 @@
 <h3>Friend Lists</h3>
 <div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">
 	<div ng-show="friend.profile.displayName && friend.profile.id !== vm.user.facebook.id">
-		<div class="media">
+		<div class="card media">
 			<div class="media-left">
 				<a href="#">
 					<img class="media-object" width="100" ng-src="{{friend.profile.profileImageURL}}">
@@ -45,7 +45,7 @@
 				<span class="text-danger">Offline</span>
 			</div>
 		</div>
-		<ul class="list-group">
+		<ul class="card list-group">
 			<li class="list-group-item" ng-repeat="item in friend.list">
 				<div ng-show="!item.private || vm.user[vm.user.provider].displayName === 'Long Dao'">
 					<span ng-show="item.private" class="label label-danger">Private</span>
