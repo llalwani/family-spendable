@@ -17,7 +17,12 @@
 		position: absolute;
 		top: 10px;
 	}
-	
+	.list-group .form-group {
+		margin-bottom: 0;
+	}
+	.list-group input-sm {
+		height: 37px;	
+	}
 	.list-group .remove {
 		position: absolute;
 		right: 0;
@@ -116,7 +121,7 @@
 						</label>
 					</div>
 				</div>
-				<button  ng-click="vm.removeItem(item)" class="remove btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash icon-white"></i></button>
+				<button ng-show="item.hover" ng-click="vm.removeItem(item)" class="remove btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash icon-white"></i></button>
 				<!--
 				<label class="btn btn-success" btn-radio="'bill'" ng-change="vm.updateItem(item)" ng-model="item.test">
 					Insert New Bill <span class="glyphicon glyphicon-file"></span>

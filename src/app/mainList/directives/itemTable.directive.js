@@ -13,14 +13,15 @@
 			controllerAs: 'vm',
 			bindToController: true,
 			scope: {
-				list: '='
+				list: '=',
+				updateProfile: '&'
 			}
 		};
 	}
 
-	ItemTableController.$inject = ['_'];
+	ItemTableController.$inject = ['_', 'itemService'];
 
-	function ItemTableController(_) {
+	function ItemTableController(_, itemService) {
 		var vm = this;
 
 		vm.removeItem = removeItem;
@@ -38,12 +39,13 @@
 		}
 
 		function updateItem(item) {
+			vm.updateProfile();
 			vm.list.$save(item);
 		}
 
 		function hover(item) {
 			// Shows/hides the delete button on hover
-			return item.showDelete = !item.showDelete;
+			return item.hover = !item.hover;
 		}
 
 		function stats() {
