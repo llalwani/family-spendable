@@ -75,10 +75,7 @@
 				</label>
 			</div>
 			<div class="btn-group" data-toggle="buttons">
-				<label class="btn btn-default btn-md" name="private" uib-btn-radio="false" ng-change="vm.updateItem(item)" ng-model="vm.newItem.private" activeClass="active">
-					<span class="fa fa-slideshare"></span> Shared
-				</label>
-				<label class="btn btn-default btn-md" name="private" uib-btn-radio="true" ng-change="vm.updateItem(item)" ng-model="vm.newItem.private">
+				<label class="btn btn-default btn-md" name="private" uib-btn-checkbox="true" ng-change="vm.updateItem(item)" ng-model="vm.newItem.private">
 					<span class="fa fa-child"></span> Private
 				</label>
 			</div>
