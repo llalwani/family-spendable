@@ -31,7 +31,9 @@
 		vm.updateProfile = updateProfile;
 		vm.stats = stats;
 		vm.formatScope = itemService.formatScope;
-		vm.rank = 'Wanderer';
+		vm.rank = [];
+		vm.rank[0] = '';
+		vm.rank[1] = 'Wanderer';
 		
 		vm.alert = alertService.alert;
 		vm.alertSet = alertService.set;
@@ -79,14 +81,23 @@
 				stats[target] = new getCount(target);
 			});
 			//todo: make this a service
+			if (stats.scope.avg < 13) {
+				vm.rank[0] = 'Spontaneous';	
+			}
+			if (stats.scope.avg > 13 && stats.scope.avg < 150) {
+				vm.rank[0] = 'Prestigious';	
+			}
+			if (stats.scope.avg > 150) {
+				vm.rank[0] = 'Grand';	
+			}
 			if (stats.activity.avg > 40) {
-				vm.rank = 'Grand Adventurer';
+				vm.rank[1] = 'Adventurer';
 			}
 			if (stats.accomplishment.avg > 40) {
-				vm.rank = 'Master Achiever';
+				vm.rank[1] = 'Achiever';
 			}
 			if (stats.traveling.avg > 40) {
-				vm.rank = 'Great Traveler';
+				vm.rank[1] = 'Traveler';
 			}
 			return stats;
 		}
