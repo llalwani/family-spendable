@@ -14,8 +14,10 @@
     });
   }
 
-  function runFunction($rootScope, $location) {
-
+  function runFunction($rootScope, $location, authService) {
+		if (authService.isLoggedIn) {
+			$location.path('/mainlist');
+		}
   }
 
 })();
