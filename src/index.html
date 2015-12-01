@@ -2,6 +2,7 @@
 <html lang="en" ng-app="app">
 
 <head>
+<<<<<<< HEAD
  <meta charset="utf-8">
  <title ng-bind="title"></title>
  <!--Bootstrap latest compiled and minified CSS-->
@@ -13,10 +14,26 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
  <!--Custom CSS-->
  <link rel="stylesheet" href="content/css/app.css" />
+=======
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Shared Bucket</title>
+	<!--Bootstrap latest compiled and minified CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!--Optional theme-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/paper/bootstrap.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/paper/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.10.1/bootstrap-social.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<!--Custom CSS-->
+	<link rel="stylesheet" href="content/css/app.css" />
+>>>>>>> origin/master
 </head>
 
 <body>
 
+<<<<<<< HEAD
  <!--Navigation bar directive that stays at the top of every page-->
  <gz-navbar current-user="currentUser"></gz-navbar>
 
@@ -73,3 +90,63 @@
 </body>
 
 </html>
+=======
+	<!--Navigation bar directive that stays at the top of every page-->
+	<gz-navbar current-user="currentUser"></gz-navbar>
+
+	<!--Main content that changes based on route-->
+	<div ng-view class="container"></div>
+
+	<!--Third-party JS-->
+	<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+	<script src="https://code.angularjs.org/1.4.4/angular-route.js"></script>
+	<!--  Using lodash because it can iterate over arr/obj faster than angular-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+	<!--  Angular Bootstrap directives-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap.min.js"></script>
+	<script src="app/thirdParty/dndLists.directive.js"></script>
+	<script src="app/thirdParty/d3.service.js"></script>
+
+	<!--main app module-->
+	<script src="app/app.module.js"></script>
+
+	<!--auth module-->
+	<script src="app/auth/auth.module.js"></script>
+	<script src="app/auth/config.route.js"></script>
+	<script src="app/auth/auth.controller.js"></script>
+	<script src="app/auth/authForm.directive.js"></script>
+	<script src="app/auth/auth.service.js"></script>
+
+	<!--layout module-->
+	<script src="app/layout/layout.module.js"></script>
+	<script src="app/layout/navbar.directive.js"></script>
+
+	<!--mainList module-->
+	<script src="app/mainList/mainList.module.js"></script>
+	<script src="app/mainList/config.route.js"></script>
+	<script src="app/mainList/mainList.controller.js"></script>
+	<script src="app/mainList/directives/itemForm.directive.js"></script>
+	<script src="app/mainList/directives/itemTable.directive.js"></script>
+
+	<!--landing module-->
+	<script src="app/landing/landing.module.js"></script>
+	<script src="app/landing/config.route.js"></script>
+
+	<!--profile module-->
+	<script src="app/profile/profile.directive.js"></script>
+
+	<!--core module-->
+	<script src="app/core/core.module.js"></script>
+	<script src="app/core/constants.js"></script>
+	<script src="app/core/firebaseData.service.js"></script>
+	<script src="app/core/item.service.js"></script>
+	<script src="app/core/textMessage.service.js"></script>
+
+</body>
+
+</html>
+>>>>>>> origin/master

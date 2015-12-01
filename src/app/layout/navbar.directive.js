@@ -18,6 +18,7 @@
   function NavBarController($location, authService, TITLE) {
     var vm = this;
 
+		vm.isCollapsed = false;
     vm.isLoggedIn = authService.isLoggedIn;
     vm.login = authService.login;
     vm.logout = logout;

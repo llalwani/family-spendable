@@ -5,12 +5,13 @@
 		.module('app', [
       // Angular modules.
       'ngRoute',
-		'ngAnimate',
+			'ngAnimate',
 
       // Third List modules.
       'firebase',
 			'dndLists',
-		'ui.bootstrap',
+			'ui.bootstrap',
+			'd3',
 
       // Custom modules.
       'app.auth',
@@ -35,6 +36,7 @@
 	function runFunction($rootScope, $location) {
 		$rootScope.$on('$routeChangeError', function (event, next, previous, error) {
 			if (error === "AUTH_REQUIRED") {
+				console.log('not authorized');
 				$location.path('/');
 			}
 		});

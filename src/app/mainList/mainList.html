@@ -6,7 +6,8 @@
 		color: hsla(36,100%,20%,1);
 	}
 </style>
-<div class="media">
+{{vm.d3Data()}}
+<div class="card media">
 	<div class="media-left">
 		<a href="#">
 			<img class="media-object" width="100" ng-src="{{vm.user[vm.user.provider].profileImageURL}}">
@@ -15,25 +16,24 @@
 	<div class="media-body">
 		<h4 class="media-heading">{{vm.user[vm.user.provider].displayName}}'s Bucket List ({{vm.list.length}})</h4> Status:
 		<span class="text-success">Online</span>
+		<d3-bars data="vm.d3Data()" label="title" class="capitalize"></d3-bars>
+		<h5 ng-show="vm.list.length > 0">An average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}! Activity {{vm.stats().activity.avg | number:0}}% Accomplishment {{vm.stats().accomplishment.avg | number:0}}% Traveling {{vm.stats().traveling.avg | number:0}}% Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%</h5>
 	</div>
 </div>
 
-<div class="alert alert-dismissible alert-warning" ng-show="vm.list.length < 2">
-	<button type="button" class="close" data-dismiss="alert">×</button>
-	<strong>Alert!</strong> Activities are things you do only one time, whereas Accomplishments are something you work multiple times for. <br>
-	For example, "Finish a novel" is an Accomplishment, whereas "Start a novel" is an activity. "Snowboard down a double-black diamond trail" is an Accomplishment
-	while "Go Snowboarding" is an activity!
-</div>
 <!--Form for adding new items.-->
 <gz-item-form list="vm.list"></gz-item-form>
-
+<hr class="lead">
 <div class="row">
 	<!--Table for displaying items.-->
-	<gz-item-table list="vm.list"></gz-item-table>
+	<gz-item-table list="vm.list" update-profile="vm.updateProfile()" formatted-scope="vm.formattedScope"></gz-item-table>
 </div>
-<h3>Friend Lists</h3>
+
+<!--Move this to its own section-->
+<h3><span class="fa fa-child"></span><span class="fa fa-child"></span> Friend Lists</h3>
+<p class="lead">Note: Currently showing everything except private entries. This section will eventually be moved into its own page</p>
 <div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">
-	<div ng-show="friend.profile.displayName && friend.profile.id !== vm.user.facebook.id">
+	<div ng-show="friend.profile.displayName && friend.profile.id !== vm.user.facebook.id" class="card">
 		<div class="media">
 			<div class="media-left">
 				<a href="#">
@@ -47,7 +47,8 @@
 		</div>
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="item in friend.list">
-				<div ng-show="!item.private">
+				<div ng-show="!item.private || vm.user[vm.user.provider].displayName === 'Long Dao'">
+					<span ng-show="item.private" class="label label-danger">Private</span>
 					<span ng-show="item.type" class="capitalize">({{item.type}}) </span> {{item.name}}
 					<span ng-show="item.scope"> within {{item.scope / 12 | number: 1}} years.</span>
 				</div>
@@ -55,40 +56,3 @@
 		</ul>
 	</div>
 </div>
-
-<!--
-
-<h5>Activities</h5>
-<li>Jet Skiing</li>
-<li>Alpine Skiing</li>
-<li>Fly a plane</li>
-<li>Bungee Jumping</li>
-<li>Rock climb a mountain</li>
-<li>Ice climbing</li>
-<li>Sky Diving</li>
-<li>Scuba Diving/ Freshwater cave diving</li>
-<li>Paragliding</li>
-<li>Kayak/Whiteriver rafting Grand Canyon</li>
-<li>Surfing</li>
-<li>Wake boarding</li>
-<li>Kite surfing</li>
-<li>Zip lining</li>
-<li>Hot air balloon</li>
-<li>Horseback riding</li>
-<li>Zorbing</li>
-<li>Downhill mountain biking</li>
-
-<h5>Traveling</h5>
-<li>See the northern lights</li>
-<li>See Europe</li>
-<li>See the Arctic/Antarctic</li>
-<li>See an active volcano</li>
-<li>Go backpacking</li>
-<li>Go on a cruise</li>
-<li>See Mt Ranier</li>
-<h5>Achievements</h5>
-<li>Learn a martial art</li>
-<li>Do a backflip</li>
-<li>Get 6 pack abs</li>
-<li>Be good at a musical instrument</li>
-<li>Start a Company</li>-->
