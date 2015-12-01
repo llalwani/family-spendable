@@ -13,14 +13,15 @@
 			controllerAs: 'vm',
 			bindToController: true,
 			scope: {
-				list: '='
+				list: '=',
+				alert: '&'
 			}
-		}
+		};
 	}
 
-	ItemFormController.$inject = ['itemService', '$timeout'];
+	ItemFormController.$inject = ['itemService', 'alertService', '$timeout'];
 
-	function ItemFormController(itemService, $timeout) {
+	function ItemFormController(itemService, alertService, $timeout) {
 		var vm = this;
 		var timer;
 
@@ -28,20 +29,23 @@
 		vm.addItem = addItem;
 		vm.formHover = formHover;
 		vm.formLeave = formLeave;
+		vm.alert = alertService.alert;
+		vm.alertSet = alertService.set;
 
 		function addItem() {
 			vm.list.$add(vm.newItem);
 			vm.newItem = new itemService.Item();
+			vm.alertSet('itemAdded');
 		}
 
 		function formHover() {
 			$timeout.cancel(timer);
 			return vm.showForm = true;
 		}
-		
+
 		function formLeave() {
 			timer = $timeout(function () {
-			return vm.showForm = false;
+				return vm.showForm = false;
 			}, 1000);
 		}
 

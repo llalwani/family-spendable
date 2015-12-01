@@ -5,9 +5,9 @@
 		.module('app.mainList')
 		.controller('MainListController', MainListController);
 
-	MainListController.$inject = ['$rootScope', '$scope', 'itemService', 'user', '_'];
+	MainListController.$inject = ['$rootScope', '$scope', 'itemService', 'alertService', 'user', '_'];
 
-	function MainListController($rootScope, $scope, itemService, user, _) {
+	function MainListController($rootScope, $scope, itemService, alertService, user, _) {
 		var vm = this;
 
 		vm.user = user;
@@ -28,6 +28,9 @@
 		vm.updateProfile = updateProfile;
 		vm.stats = stats;
 		vm.formatScope = itemService.formatScope;
+		
+		vm.alert = alertService.alert;
+		vm.alertSet = alertService.set;
 		vm.d3Data = _.memoize(d3Data, function (input) {
 			return JSON.stringify(input)
 		});

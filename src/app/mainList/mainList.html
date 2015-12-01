@@ -6,7 +6,12 @@
 		color: hsla(36,100%,20%,1);
 	}
 </style>
-{{vm.d3Data()}}
+{{vm.d3Data()}}.
+{{vm.alert}}
+<div class="alert alert-dismissible alert-success" ng-show="vm.alert.itemAdded">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	<strong>Success!</strong> Item Added.
+</div>
 <div class="card media">
 	<div class="media-left">
 		<a href="#">

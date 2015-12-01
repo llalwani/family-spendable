@@ -18,9 +18,9 @@
 		};
 	}
 
-	ItemTableController.$inject = ['_', 'itemService'];
+	ItemTableController.$inject = ['_', 'itemService', 'alertService'];
 
-	function ItemTableController(_, itemService) {
+	function ItemTableController(_, itemService, alertService) {
 		var vm = this;
 
 		vm.removeItem = removeItem;
@@ -28,7 +28,9 @@
 		vm.updateItem = updateItem;
 		vm.hover = hover;
 		vm.formatScope = itemService.formatScope;
-		
+		vm.alert = alertService.alert;
+		vm.alertSet = alertService.set;
+
 		function removeItem(item) {
 			vm.list.$remove(item);
 		}
