@@ -4,7 +4,7 @@
 	angular
 		.module('app.core')
 		.constant('FIREBASE_URL', 'https://shared-bucket.firebaseio.com/')
-		.constant('TITLE', 'Codename: Shared Niglet')
+		.constant('TITLE', 'Codename: Shared Buckets')
 		.factory(
 			"_",
 			function ($window) {

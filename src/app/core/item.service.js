@@ -28,7 +28,6 @@
 			var defered = $q.defer();
 
 			var arr = $firebaseArray(firebaseDataService.users.child(uid).child('list')).$loaded().then(function (response) {
-				console.log('show response', response);
 				defered.resolve(response);
 			});
 
@@ -91,7 +90,7 @@
 		function formatScope(scope, month, year) {
 			//add a "plus sign" to indicate 50 or more years
 			year = scope === 600 ? year + '+' : year;
-			return scope >= 12 ? Math.floor(scope / 12) + year :  Math.floor(scope) + month;
+			return scope >= 12 ? Math.floor(scope / 12) + year : Math.floor(scope) + month;
 		}
 	}
 

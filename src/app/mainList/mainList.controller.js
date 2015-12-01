@@ -1,3 +1,5 @@
+//todo: move logic out of controller
+
 (function () {
 	'use strict';
 
