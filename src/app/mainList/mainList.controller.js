@@ -27,6 +27,11 @@
 		vm.updateProfile = updateProfile;
 		vm.stats = stats;
 		vm.formatScope = itemService.formatScope;
+	vm.d3Data = [
+			{title: "Greg", score:12},
+			{title: "Ari", score:43},
+			{title: "Loser", score: 87}
+		];
 		
 		console.log("Current User", vm.user);
 		console.log("User List", vm.list);

@@ -15,7 +15,6 @@
 	<div class="media-body">
 		<h4 class="media-heading">{{vm.user[vm.user.provider].displayName}}'s Bucket List ({{vm.list.length}})</h4> Status:
 		<span class="text-success">Online</span>
-		<gh-visualization val="data"></gh-visualization>
 		<h5 ng-show="vm.list.length > 0">An average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}! Activity {{vm.stats().activity.avg | number:0}}% Accomplishment {{vm.stats().accomplishment.avg | number:0}}% Traveling {{vm.stats().traveling.avg | number:0}}% Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%</h5>
 	</div>
 </div>

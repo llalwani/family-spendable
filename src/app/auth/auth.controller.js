@@ -11,7 +11,6 @@
 		var vm = this;
 		//		vm.register = register;
 		vm.login = login;
-
 		//		function register(user) {
 		//			return authService.register(user)
 		//				.then(function () {
@@ -34,8 +33,10 @@
 				})
 				.catch(function (error) {
 					vm.error = error;
+				console.log('error');
 				});
 		}
+
 
 	}
 
