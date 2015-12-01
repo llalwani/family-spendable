@@ -14,15 +14,11 @@
     });
   }
 
-<<<<<<< HEAD
-  function runFunction($rootScope, $location, TITLE) {
+  function runFunction($rootScope, $location, authService, TITLE) {
     $rootScope.title = TITLE;
-=======
-  function runFunction($rootScope, $location, authService) {
-		if (authService.isLoggedIn) {
-			$location.path('/mainlist');
-		}
->>>>>>> origin/master
+    if (authService.isLoggedIn) {
+      $location.path('/mainlist');
+    }
   }
 
 })();
