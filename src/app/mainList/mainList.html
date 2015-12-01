@@ -2,12 +2,13 @@
 	.capitalize {
 		text-transform: capitalize;
 	}
+	
 	.alert-warning {
-		color: hsla(36,100%,20%,1);
+		color: hsla(36, 100%, 20%, 1);
 	}
+
 </style>
-{{vm.d3Data()}}.
-{{vm.alert}}
+{{vm.d3Data()}}
 <div class="alert alert-dismissible alert-success" ng-show="vm.alert.itemAdded">
 	<button type="button" class="close" data-dismiss="alert">×</button>
 	<strong>Success!</strong> Item Added.
@@ -22,7 +23,22 @@
 		<h4 class="media-heading">{{vm.user[vm.user.provider].displayName}}'s Bucket List ({{vm.list.length}})</h4> Status:
 		<span class="text-success">Online</span>
 		<d3-bars data="vm.d3Data()" label="title" class="capitalize"></d3-bars>
-		<h5 ng-show="vm.list.length > 0">An average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}! Activity {{vm.stats().activity.avg | number:0}}% Accomplishment {{vm.stats().accomplishment.avg | number:0}}% Traveling {{vm.stats().traveling.avg | number:0}}% Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%</h5>
+		<h5 ng-show="vm.list.length > 0">An average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}!</h5>
+		<div class="row">
+			<div class="col-lg-3 col-xs-3">
+				<span class="glyphicon glyphicon-plane"></span>Traveling {{vm.stats().traveling.avg | number:0}}%
+			</div>
+			<div class="col-lg-3 col-xs-3">
+				<span class="glyphicon glyphicon-sunglasses"></span>Activity {{vm.stats().activity.avg | number:0}}%
+			</div>
+			<div class="col-lg-3 col-xs-3">
+				<span class="glyphicon glyphicon-king"></span>Accomplishment {{vm.stats().accomplishment.avg | number:0}}%
+			</div>
+			<div class="col-lg-3 col-xs-3">
+				Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%
+			</div>
+		</div>
+		
 	</div>
 </div>
 
@@ -34,7 +50,7 @@
 	<gz-item-table list="vm.list" update-profile="vm.updateProfile()" formatted-scope="vm.formattedScope"></gz-item-table>
 </div>
 
-<!--Move this to its own section-->
+<!--todo: move this to its own section-->
 <h3><span class="fa fa-child"></span><span class="fa fa-child"></span> Friend Lists</h3>
 <p class="lead">Note: Currently showing everything except private entries. This section will eventually be moved into its own page</p>
 <div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">

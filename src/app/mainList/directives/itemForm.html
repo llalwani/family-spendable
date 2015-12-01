@@ -80,14 +80,14 @@
 					</label>
 				</div>
 				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-success btn-md" uib-btn-radio="'travelling'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
+						<span class="glyphicon glyphicon-plane"></span> Traveling
+					</label>
 					<label class="btn btn-success btn-md" uib-btn-radio="'activity'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type" required>
 						<span class="glyphicon glyphicon-sunglasses"></span> Activity
 					</label>
 					<label class="btn btn-success btn-md" uib-btn-radio="'accomplishment'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
 						<span class="glyphicon glyphicon-king"></span> Accomplishment
-					</label>
-					<label class="btn btn-success btn-md" uib-btn-radio="'travelling'" ng-change="vm.updateItem(item)" ng-model="vm.newItem.type">
-						<span class="glyphicon glyphicon-plane"></span> Traveling
 					</label>
 				</div>
 				<div class="btn-group" data-toggle="buttons">
