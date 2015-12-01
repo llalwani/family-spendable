@@ -38,7 +38,6 @@
 		}
 
 		function updateItem(item) {
-			vm.updateProfile();
 			vm.list.$save(item);
 		}
 

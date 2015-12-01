@@ -28,7 +28,11 @@
 		vm.updateProfile = updateProfile;
 		vm.stats = stats;
 		vm.formatScope = itemService.formatScope;
-		vm.d3Data = _.memoize(function () {
+		vm.d3Data = _.memoize(d3Data, function (input) {
+			return JSON.stringify(input)
+		});
+
+		function d3Data() {
 			var arr = [];
 			_.each(vm.stats(), function (stat) {
 				if (stat.name !== "scope") {
@@ -40,7 +44,10 @@
 				}
 			});
 			return arr;
-		});
+		};
+
+
+
 
 		console.log("Current User", vm.user);
 		console.log("User List", vm.list);
