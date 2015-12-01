@@ -14,11 +14,12 @@
 
 		vm.user = user;
 		vm.shared = itemService.allUsers(user.uid);
-		vm.list = itemService.getListByUser(user.uid);
 		itemService.getListByUser(user.uid).then(function (data) {
 			vm.list = data;
 			_.each(vm.list, function (item) {
 				item.hover = false;
+//				fixing data
+				if (item.type === 'travelling') {item.type = 'traveling';}
 				delete item['phone'];
 				delete item['notified'];
 				delete item['test'];
@@ -30,6 +31,7 @@
 		vm.updateProfile = updateProfile;
 		vm.stats = stats;
 		vm.formatScope = itemService.formatScope;
+		vm.rank = 'Wanderer';
 		
 		vm.alert = alertService.alert;
 		vm.alertSet = alertService.set;
@@ -76,7 +78,16 @@
 			_.each(list, function (target) {
 				stats[target] = new getCount(target);
 			});
-
+			//todo: make this a service
+			if (stats.activity.avg > 40) {
+				vm.rank = 'Grand Adventurer';
+			}
+			if (stats.accomplishment.avg > 40) {
+				vm.rank = 'Master Achiever';
+			}
+			if (stats.traveling.avg > 40) {
+				vm.rank = 'Great Traveler';
+			}
 			return stats;
 		}
 
