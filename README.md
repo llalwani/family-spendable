@@ -6,6 +6,9 @@ The app uses these technologies:
 * Firebase 2.2.x
 * AngularFire 1.1.x
 * Bootstrap 3.3.x
+* Lodash 3.10.x
+* SASS
+* Gulp
 
 ## Getting started
 
@@ -21,6 +24,8 @@ Navigate to the /src folder and enter, `python -m SimpleHTTPServer`, in your ter
 
 This app follows [John Papa's AngularJS style guide](https://github.com/johnpapa/angular-styleguide),
 which is the style guide recommended by the AngularJS core team.
+
+Todo: All css will eventually be migrated to SASS and processed with Gulp. They are currently littered throughout the views
 
 ## Contact
 
