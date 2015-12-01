@@ -26,8 +26,10 @@
 					});
 
 					// watch for data changes and re-render
-					scope.$watch('data', function (newVals, oldVals) {
-						return scope.render(newVals);
+					scope.$watchC('data', function (newVals, oldVals) {
+						if (newVals) {
+							return scope.render(newVals);
+						}
 					}, true);
 
 					// define render function
@@ -67,7 +69,8 @@
 							.transition()
 							.duration(1000) // time of duration
 							.attr("width", function (d) {
-								return d.score / (max / width);
+								console.log(d.avg);
+								return d.avg / (max / width);
 							}); // width based on scale
 
 						svg.selectAll("text")

@@ -27,12 +27,20 @@
 		vm.updateProfile = updateProfile;
 		vm.stats = stats;
 		vm.formatScope = itemService.formatScope;
-	vm.d3Data = [
-			{title: "Greg", score:12},
-			{title: "Ari", score:43},
-			{title: "Loser", score: 87}
-		];
-		
+		vm.d3Data = _.memoize(function () {
+			var arr = [];
+			_.each(vm.stats(), function (stat) {
+				if (stat.name !== "scope") {
+					var obj = {
+						title: stat.name,
+						avg: Math.floor(stat.avg)
+					};
+					arr.push(obj);
+				}
+			});
+			return arr;
+		});
+
 		console.log("Current User", vm.user);
 		console.log("User List", vm.list);
 		itemService.syncProfile(user.uid, vm.user[vm.user.provider]);
@@ -78,6 +86,7 @@
 			});
 			var avg = target === 'scope' ? count / total : count / total * 100;
 			//			return {
+			this.name = target;
 			this.count = count || 0;
 			this.total = total || 0;
 			this.avg = avg || 0;
