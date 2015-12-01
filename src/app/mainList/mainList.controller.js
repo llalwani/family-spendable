@@ -33,8 +33,10 @@
 		
 		vm.alert = alertService.alert;
 		vm.alertSet = alertService.set;
+		
+		//todo: move out d3
 		vm.d3Data = _.memoize(d3Data, function (input) {
-			return JSON.stringify(input)
+			return JSON.stringify(input);
 		});
 
 		function d3Data() {

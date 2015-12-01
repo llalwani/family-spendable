@@ -6,24 +6,30 @@
 	.alert-warning {
 		color: hsla(36, 100%, 20%, 1);
 	}
+	
+	#profile {
+/*		min-height: 300px;*/
+	}
 
 </style>
-{{vm.d3Data()}}
+<!--{{vm.d3Data()}}-->
 <div class="alert alert-dismissible alert-success" ng-show="vm.alert.itemAdded">
 	<button type="button" class="close" data-dismiss="alert">×</button>
 	<strong>Success!</strong> Item Added.
 </div>
-<div class="card media">
+<div id="profile" class="card media">
 	<div class="media-left">
 		<a href="#">
 			<img class="media-object" width="100" ng-src="{{vm.user[vm.user.provider].profileImageURL}}">
 		</a>
 	</div>
 	<div class="media-body">
-		<h4 class="media-heading">{{vm.user[vm.user.provider].displayName}}'s Bucket List ({{vm.list.length}})</h4> Status:
+		<h4 class="media-heading">
+		{{vm.user[vm.user.provider].displayName}}'s Bucket List ({{vm.list.length}})
+			<small ng-show="vm.list.length > 0"> with an average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}!</small>
+		</h4> Status:
 		<span class="text-success">Online</span>
-		<d3-bars data="vm.d3Data()" label="title" class="capitalize"></d3-bars>
-		<h5 ng-show="vm.list.length > 0">An average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}!</h5>
+<!--		<d3-bars data="vm.d3Data()" label="title" class="capitalize"></d3-bars>-->
 		<div class="row">
 			<div class="col-lg-3 col-xs-3">
 				<span class="glyphicon glyphicon-plane"></span>Traveling {{vm.stats().traveling.avg | number:0}}%
@@ -38,7 +44,7 @@
 				Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%
 			</div>
 		</div>
-		
+
 	</div>
 </div>
 
