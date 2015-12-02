@@ -74,7 +74,7 @@
 
 	</div>
 </div>
-
+{{vm.listCount}}
 <!--Form for adding new items.-->
 <gz-item-form list="vm.list" rank="vm.rank"></gz-item-form>
 <hr class="lead">
@@ -84,9 +84,9 @@
 </div>
 
 <!--todo: move this to its own section-->
-<h3><span class="fa fa-child"></span><span class="fa fa-child"></span> Friend Lists ({{vm.shared.length}})</h3>
+<h3><span class="fa fa-child"></span><span class="fa fa-child"></span> Friend Lists ({{vm.sharedFormatted.length}})</h3>
 <p class="lead">Note: Currently showing everything except private entries. This section will eventually be moved into its own page</p>
-<div ng-repeat="friend in vm.sharedFormatted | orderBy: 'rank.class'">
+<div ng-repeat="friend in vm.sharedFormatted | orderBy: '-rank.xp'">
 	<div ng-show="(friend.profile.displayName && friend.profile.id !== vm.user[vm.user.provider].id)" class="card">
 		<div class="media">
 			<div class="media-left">

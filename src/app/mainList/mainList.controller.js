@@ -16,6 +16,16 @@
 		vm.shared = itemService.allUsers(user.uid);
 		vm.listCount = 0;
 		itemService.getListByUser(user.uid).then(function (data) {
+			vm.sharedFormatted = _.each(vm.shared, function(friend){
+				friend.rank = friend.rank || {};
+				friend.rank.xp = friend.rank.xp || 0;
+				friend.rank.title = friend.rank.title || "Wanderer";
+				friend.rank.class = friend.rank.class || "C";
+			});
+			$scope.$watch("vm.list.length", function () {
+				vm.listCount = vm.list.length;
+
+			});
 			vm.list = data;
 			_.each(vm.list, function (item) {
 				item.hover = false;
@@ -30,15 +40,10 @@
 				vm.list.$save(item);
 				vm.rank.xp += 2;
 				vm.alertSet('xpLog');
-				$scope.$watch("vm.list.length", function () {
-					vm.listCount = vm.list.length;
-					vm.sharedFormatted = _.each(vm.shared, function(friend){
-						friend.rank = friend.rank || {};
-						friend.rank.xp = friend.rank.xp || 0;
-						friend.rank.title = friend.rank.title || "Wanderer";
-						friend.rank.class = friend.rank.class || "C";
-					});
-				});
+				
+				
+				
+				
 			});
 		});
 		vm.profile = itemService.getProfileByUser(user.uid);
