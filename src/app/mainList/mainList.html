@@ -29,7 +29,7 @@
 			<small ng-show="vm.list.length > 0"> with an average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}!</small>
 		</h4> 
 <!--		Status: <span class="text-success">Online</span>-->
-		Rank: <span class="text-info">{{vm.rank[0]}} {{vm.rank[1]}}</span>
+		Rank: <span class="text-info">{{vm.rank.class}}</span> Class: <span class="text-info">{{vm.rank.speed}} {{vm.rank.title}}</span>
 <!--		<span class="text-success">Online</span>-->
 <!--		<d3-bars data="vm.d3Data()" label="title" class="capitalize"></d3-bars>-->
 		<div class="row">

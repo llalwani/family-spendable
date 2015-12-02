@@ -14,30 +14,35 @@
 
 		vm.user = user;
 		vm.shared = itemService.allUsers(user.uid);
+		vm.listCount = 0;
 		itemService.getListByUser(user.uid).then(function (data) {
 			vm.list = data;
 			_.each(vm.list, function (item) {
 				item.hover = false;
-//				fixing data
-				if (item.type === 'travelling') {item.type = 'traveling';}
+				//				fixing data
+				if (item.type === 'travelling') {
+					item.type = 'traveling';
+				}
 				delete item['phone'];
 				delete item['notified'];
 				delete item['test'];
 				delete item['showDelete'];
 				vm.list.$save(item);
+				$scope.$watch("vm.list.length", function () {
+					vm.listCount = vm.list.length;
+				});
 			});
 		});
 		vm.profile = itemService.getProfileByUser(user.uid);
+
 		vm.updateProfile = updateProfile;
 		vm.stats = stats;
 		vm.formatScope = itemService.formatScope;
-		vm.rank = [];
-		vm.rank[0] = '';
-		vm.rank[1] = 'Wanderer';
-		
+		vm.rank ={};
+
 		vm.alert = alertService.alert;
 		vm.alertSet = alertService.set;
-		
+
 		//todo: move out d3
 		vm.d3Data = _.memoize(d3Data, function (input) {
 			return JSON.stringify(input);
@@ -81,24 +86,39 @@
 				stats[target] = new getCount(target);
 			});
 			//todo: make this a service
-			if (stats.scope.avg < 13) {
-				vm.rank[0] = 'Spontaneous';	
+			vm.rank.class = 'C';
+			vm.rank.speed = '';
+			if (vm.listCount < 2) {
+				vm.rank.title = 'Wanderer';
 			}
-			if (stats.scope.avg > 13 && stats.scope.avg < 150) {
-				vm.rank[0] = 'Prestigious';	
+			else if (vm.listCount < 4) {
+				vm.rank.title = 'Hobbyist';
 			}
-			if (stats.scope.avg > 150) {
-				vm.rank[0] = 'Grand';	
+			else {
+				vm.rank.title = 'Pencil';
+				if (stats.scope.avg >= 1 && stats.scope.avg < 7) {
+					vm.rank.speed = 'Sprinting';
+				}
+				if (stats.scope.avg > 13 && stats.scope.avg < 150) {
+					vm.rank.speed = 'Prestigious';
+				}
+				if (stats.scope.avg > 150) {
+					vm.rank.speed = 'Grand';
+				}
+				if (stats.activity.avg > 40) {
+					vm.rank.title = 'Adventurer';
+				}
+				if (stats.accomplishment.avg > 40) {
+					vm.rank.title = 'Achiever';
+				}
+				if (stats.traveling.avg > 40) {
+					vm.rank.title = 'Traveler';
+				}
+				if (stats.activity.avgInt === 33) {
+					vm.rank.title = 'Jack of All Trades';
+				}
 			}
-			if (stats.activity.avg > 40) {
-				vm.rank[1] = 'Adventurer';
-			}
-			if (stats.accomplishment.avg > 40) {
-				vm.rank[1] = 'Achiever';
-			}
-			if (stats.traveling.avg > 40) {
-				vm.rank[1] = 'Traveler';
-			}
+
 			return stats;
 		}
 
@@ -127,6 +147,7 @@
 			this.count = count || 0;
 			this.total = total || 0;
 			this.avg = avg || 0;
+			this.avgInt = Math.floor(avg) || 0;
 			//			}
 		}
 	}
