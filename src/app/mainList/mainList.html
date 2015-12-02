@@ -25,13 +25,21 @@
 	</div>
 	<div class="media-body">
 		<h4 class="media-heading">
-		{{vm.user[vm.user.provider].displayName}}'s Bucket List ({{vm.list.length}})
+		{{vm.user[vm.user.provider].displayName}}
 			<small ng-show="vm.list.length > 0"> with an average of {{vm.formatScope(vm.stats().scope.avg,' months',' years') }}!</small>
 		</h4> 
 <!--		Status: <span class="text-success">Online</span>-->
-		Rank: <span class="text-info">{{vm.rank.class}}</span> Class: <span class="text-info">{{vm.rank.speed}} {{vm.rank.title}}</span>
+		Grade: <span class="text-info">{{vm.rank.class}}</span> Rank: <span class="text-info">{{vm.rank.speed}} {{vm.rank.title}}</span>
 <!--		<span class="text-success">Online</span>-->
 <!--		<d3-bars data="vm.d3Data()" label="title" class="capitalize"></d3-bars>-->
+<!--
+		
+-->
+	<div class="row">
+		<div class="col-lg-12">
+			<uib-progressbar max="max" value="vm.rank.xp" type="info"></uib-progressbar>
+		</div>
+	</div>
 		<div class="row">
 			<div class="col-lg-3 col-xs-3">
 				<span class="glyphicon glyphicon-plane"></span>Traveling {{vm.stats().traveling.avg | number:0}}%
@@ -42,7 +50,7 @@
 			<div class="col-lg-3 col-xs-3">
 				<span class="glyphicon glyphicon-king"></span>Accomplishment {{vm.stats().accomplishment.avg | number:0}}%
 			</div>
-			<div class="col-lg-3 col-xs-3">
+			<div class="col-lg-3 col-xs-3 hidden-xs">
 				Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%
 			</div>
 		</div>

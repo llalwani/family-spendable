@@ -88,6 +88,7 @@
 			//todo: make this a service
 			vm.rank.class = 'C';
 			vm.rank.speed = '';
+			vm.rank.xp = 10;
 			if (vm.listCount < 2) {
 				vm.rank.title = 'Wanderer';
 			}
