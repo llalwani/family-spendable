@@ -32,6 +32,7 @@
 		vm.alertSet = alertService.set;
 
 		function removeItem(item) {
+			vm.alertSet('itemRemoved');
 			vm.list.$remove(item);
 		}
 
