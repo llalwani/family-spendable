@@ -54,7 +54,7 @@
 -->
 	<div class="row">
 		<div class="col-lg-12">
-			<uib-progressbar max="max" value="vm.rank.xp" type="info"></uib-progressbar>
+			<uib-progressbar max="100" value="vm.rank.xp" type="info"></uib-progressbar>
 		</div>
 	</div>
 		<div class="row">
@@ -86,7 +86,7 @@
 <!--todo: move this to its own section-->
 <h3><span class="fa fa-child"></span><span class="fa fa-child"></span> Friend Lists ({{vm.shared.length}})</h3>
 <p class="lead">Note: Currently showing everything except private entries. This section will eventually be moved into its own page</p>
-<div ng-repeat="friend in vm.shared | orderBy: 'profile.displayName'">
+<div ng-repeat="friend in vm.sharedFormatted | orderBy: 'profile.displayName'">
 	<div ng-show="(friend.profile.displayName && friend.profile.id !== vm.user[vm.user.provider].id)" class="card">
 		<div class="media">
 			<div class="media-left">
@@ -107,6 +107,11 @@
 					</div>
 					<div class="col-lg-3 col-xs-3">
 						<span class="glyphicon glyphicon-king"></span>Accomplishment {{friend.rank.stats.accomplishment.avgInt}}%
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<uib-progressbar max="100" value="friend.rank.xp" type="info"></uib-progressbar>
+						</div>
 					</div>
 <!--
 					<div class="col-lg-3 col-xs-3 hidden-xs">

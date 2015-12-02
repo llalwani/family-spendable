@@ -32,6 +32,11 @@
 				vm.alertSet('xpLog');
 				$scope.$watch("vm.list.length", function () {
 					vm.listCount = vm.list.length;
+					vm.sharedFormatted = _.each(vm.shared, function(friend){
+						friend.rank = friend.rank || {};
+						friend.rank.xp = friend.rank.xp || 0;
+						friend.rank.title = friend.rank.title || "Wanderer";
+					});
 				});
 			});
 		});
