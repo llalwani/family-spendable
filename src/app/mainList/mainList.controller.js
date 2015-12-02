@@ -36,6 +36,7 @@
 						friend.rank = friend.rank || {};
 						friend.rank.xp = friend.rank.xp || 0;
 						friend.rank.title = friend.rank.title || "Wanderer";
+						friend.rank.class = friend.rank.class || "C";
 					});
 				});
 			});
@@ -114,7 +115,7 @@
 					vm.rank.speed = 'Grand';
 				}
 				if (stats.activity.avg > 40) {
-					vm.rank.title = 'Voluptuary of the North';
+					vm.rank.title = 'Voluptuary';
 				}
 				if (stats.accomplishment.avg > 40) {
 					vm.rank.title = 'Achiever';
