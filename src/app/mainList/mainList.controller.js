@@ -34,12 +34,14 @@
 			});
 		});
 		vm.profile = itemService.getProfileByUser(user.uid);
-
+		vm.profile.stats = vm.stats;
 		vm.updateProfile = updateProfile;
 		vm.stats = stats;
+		
 		vm.formatScope = itemService.formatScope;
-		vm.rank ={};
-
+		vm.rank = itemService.getRankByUser(user.uid);
+		vm.rank.stats = vm.stats();
+		
 		vm.alert = alertService.alert;
 		vm.alertSet = alertService.set;
 
@@ -118,6 +120,8 @@
 				if (stats.activity.avgInt === 33) {
 					vm.rank.title = 'Jack of All Trades';
 				}
+				vm.rank.stats = stats;
+				vm.rank.$save();
 			}
 
 			return stats;

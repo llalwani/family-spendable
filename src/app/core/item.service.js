@@ -1,3 +1,4 @@
+//todo: rename item service to something more general 
 (function () {
 	'use strict';
 
@@ -11,6 +12,7 @@
 
 		var service = {
 			getListByUser: getListByUser,
+			getRankByUser: getRankByUser,
 			Item: Item,
 			allUsers: allUsers,
 			getProfileByUser: getProfileByUser,
@@ -23,7 +25,11 @@
 		return service;
 
 		////////////
-
+		
+		function getRankByUser(uid) {
+			return $firebaseObject(firebaseDataService.users.child(uid).child('rank'));
+		}
+		
 		function getListByUser(uid) {
 			var defered = $q.defer();
 
