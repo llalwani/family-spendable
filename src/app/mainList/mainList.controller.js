@@ -102,10 +102,10 @@
 				if (stats.scope.avg >= 1 && stats.scope.avg < 7) {
 					vm.rank.speed = 'Sprinting';
 				}
-				if (stats.scope.avg > 13 && stats.scope.avg < 150) {
+				if (stats.scope.avg > 13 && stats.scope.avg < 37) {
 					vm.rank.speed = 'Prestigious';
 				}
-				if (stats.scope.avg > 150) {
+				if (stats.scope.avg >= 37) {
 					vm.rank.speed = 'Grand';
 				}
 				if (stats.activity.avg > 40) {
