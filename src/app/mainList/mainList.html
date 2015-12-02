@@ -10,7 +10,9 @@
 	#profile {
 /*		min-height: 300px;*/
 	}
-
+	.media-body {
+		padding: 10px;
+	}
 </style>
 <!--{{vm.d3Data()}}-->
 
@@ -56,8 +58,6 @@
 		<div class="col-lg-12">
 			<uib-progressbar max="100" value="vm.rank.xp" type="info"></uib-progressbar>
 		</div>
-	</div>
-		<div class="row">
 			<div class="col-lg-3 col-xs-3">
 				<span class="glyphicon glyphicon-plane"></span>Traveling {{vm.stats().traveling.avg | number:0}}%
 			</div>
@@ -108,11 +108,9 @@
 					<div class="col-lg-3 col-xs-3">
 						<span class="glyphicon glyphicon-king"></span>Accomplishment {{friend.rank.stats.accomplishment.avgInt}}%
 					</div>
-					<div class="row">
 						<div class="col-lg-12">
 							<uib-progressbar max="100" value="friend.rank.xp" type="info"></uib-progressbar>
 						</div>
-					</div>
 <!--
 					<div class="col-lg-3 col-xs-3 hidden-xs">
 						Unsorted {{100 - vm.stats().activity.avg - vm.stats().accomplishment.avg - vm.stats().traveling.avg | number:0}}%
