@@ -89,7 +89,7 @@
 				stats[target] = new getCount(target);
 			});
 			//todo: make this a service
-			vm.rank.class = 'C';
+			vm.rank.class = vm.rank.xp >= 100 ? 'B' : 'C';
 			vm.rank.speed = '';
 			if (vm.listCount < 2) {
 				vm.rank.title = 'Wanderer';
@@ -98,7 +98,7 @@
 				vm.rank.title = 'Hobbyist';
 			}
 			else {
-				vm.rank.title = 'Pencil';
+				vm.rank.title = 'Princess of Indecision';
 				if (stats.scope.avg >= 1 && stats.scope.avg < 7) {
 					vm.rank.speed = 'Sprinting';
 				}
@@ -117,11 +117,11 @@
 				if (stats.traveling.avg > 40) {
 					vm.rank.title = 'Traveler';
 				}
-				if (stats.activity.avgInt === 33) {
+				if (stats.activity.avgInt === 33 && stats.traveling.avgInt === 33 && stats.accomplishment.avgInt === 33) {
 					vm.rank.title = 'Jack of All Trades';
 				}
 				vm.rank.stats = stats;
-				vm.rank.$save();
+				if(stats.scope.avg !== 0) {vm.rank.$save()};
 			}
 
 			return stats;
