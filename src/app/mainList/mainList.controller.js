@@ -28,6 +28,8 @@
 				delete item['test'];
 				delete item['showDelete'];
 				vm.list.$save(item);
+				vm.rank.xp += 2;
+				vm.alertSet('xpLog');
 				$scope.$watch("vm.list.length", function () {
 					vm.listCount = vm.list.length;
 				});
@@ -40,8 +42,7 @@
 		
 		vm.formatScope = itemService.formatScope;
 		vm.rank = itemService.getRankByUser(user.uid);
-		vm.rank.stats = vm.stats();
-		
+		vm.rank.xp =  vm.rank.xp || 0;
 		vm.alert = alertService.alert;
 		vm.alertSet = alertService.set;
 
@@ -90,7 +91,6 @@
 			//todo: make this a service
 			vm.rank.class = 'C';
 			vm.rank.speed = '';
-			vm.rank.xp = 10;
 			if (vm.listCount < 2) {
 				vm.rank.title = 'Wanderer';
 			}

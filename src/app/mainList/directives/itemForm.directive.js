@@ -14,6 +14,7 @@
 			bindToController: true,
 			scope: {
 				list: '=',
+				rank: '=',
 				alert: '&'
 			}
 		};
@@ -33,6 +34,7 @@
 		vm.alertSet = alertService.set;
 
 		function addItem() {
+			vm.rank.xp += 16;
 			vm.list.$add(vm.newItem);
 			vm.newItem = new itemService.Item();
 			vm.alertSet('itemAdded');
