@@ -92,10 +92,10 @@
 			vm.rank.class = vm.rank.xp >= 100 ? 'B' : 'C';
 			vm.rank.speed = '';
 			if (vm.listCount < 2) {
-				vm.rank.title = 'Wanderer';
+				vm.rank.title = 'Clueless';
 			}
 			else if (vm.listCount < 4) {
-				vm.rank.title = 'Hobbyist';
+				vm.rank.title = 'Wanderer';
 			}
 			else {
 				vm.rank.title = 'Princess of Indecision';
@@ -109,13 +109,13 @@
 					vm.rank.speed = 'Grand';
 				}
 				if (stats.activity.avg > 40) {
-					vm.rank.title = 'Adventurer';
+					vm.rank.title = 'Voluptuary of the North';
 				}
 				if (stats.accomplishment.avg > 40) {
 					vm.rank.title = 'Achiever';
 				}
 				if (stats.traveling.avg > 40) {
-					vm.rank.title = 'Traveler';
+					vm.rank.title = 'Voyager';
 				}
 				if (stats.activity.avgInt === 33 && stats.traveling.avgInt === 33 && stats.accomplishment.avgInt === 33) {
 					vm.rank.title = 'Jack of All Trades';
