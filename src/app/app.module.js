@@ -23,9 +23,11 @@
 		.config(configFunction)
 		.run(runFunction);
 
-	configFunction.$inject = ['$routeProvider'];
+	//	configFunction.$inject = ['$routeProvider'];
 
-	function configFunction($routeProvider) {
+	function configFunction($routeProvider, $logProvider) {
+		//		Turn on/off debug mode
+		$logProvider.debugEnabled(true);
 		$routeProvider.otherwise({
 			redirectTo: '/'
 		});
