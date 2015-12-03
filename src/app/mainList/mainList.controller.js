@@ -78,9 +78,8 @@
 
 
 
-
 		console.log("Current User", vm.user);
-		console.log("User List", vm.list);
+		console.log("Rank", vm.rank);
 		itemService.syncProfile(user.uid, vm.user[vm.user.provider]);
 
 		$rootScope.$on('logout', function () {
@@ -119,15 +118,18 @@
 				if (stats.scope.avg >= 37) {
 					vm.rank.speed = 'Grand';
 				}
-				if (stats.activity.avg > 40) {
+				if (stats.activity.avg > 35) {
 					vm.rank.title = 'Voluptuary';
 				}
-				if (stats.accomplishment.avg > 40) {
+				if (stats.accomplishment.avg > 35) {
 					vm.rank.title = 'Achiever';
 				}
-				if (stats.traveling.avg > 40) {
+				if (stats.traveling.avg > 35) {
 					vm.rank.title = 'Voyager';
 				}
+				if (stats.accomplishment.avg > 33 && stats.activity.avg > 33 || stats.accomplishment.avg > 33 && stats.travel.avg > 33) {
+					vm.rank.title = 'Visionary of Adventure';
+				}					
 				if (stats.activity.avgInt === 33 && stats.traveling.avgInt === 33 && stats.accomplishment.avgInt === 33) {
 					vm.rank.title = 'Jack of All Trades';
 				}
@@ -163,7 +165,7 @@
 			this.count = count || 0;
 			this.total = total || 0;
 			this.avg = avg || 0;
-			this.avgInt = Math.floor(avg) || 0;
+			this.avgInt = _.round(avg) || 0;
 			//			}
 		}
 	}
