@@ -12,6 +12,7 @@
 
 		var service = {
 			root: root,
+			cacheList: root.child('cacheList'),			
 			users: root.child('users'),
 			amOnline: root.child('.info'),
 			presence: root.child('presence'),

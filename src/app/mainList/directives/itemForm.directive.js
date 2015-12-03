@@ -20,9 +20,9 @@
 		};
 	}
 
-	ItemFormController.$inject = ['itemService', 'alertService', '$timeout'];
+	ItemFormController.$inject = ['itemService', 'alertService', '$timeout', '_'];
 
-	function ItemFormController(itemService, alertService, $timeout) {
+	function ItemFormController(itemService, alertService, $timeout, _) {
 		var vm = this;
 		var timer;
 
@@ -32,10 +32,16 @@
 		vm.formLeave = formLeave;
 		vm.alert = alertService.alert;
 		vm.alertSet = alertService.set;
+		vm.cacheList = [];
+		
+		itemService.getCacheList().then(function (data) {
+			vm.cacheList = _.pluck(data, '$value');
+		});
 
 		function addItem() {
 			vm.rank.xp += 16;
 			vm.list.$add(vm.newItem);
+			vm.cacheList.$add(vm.newItem.name);
 			vm.newItem = new itemService.Item();
 			vm.alertSet('itemAdded');
 		}

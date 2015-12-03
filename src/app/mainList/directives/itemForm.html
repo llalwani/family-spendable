@@ -38,12 +38,12 @@
 		overflow: hidden;
 	}
 </style>
-
 <div ng-mouseenter="vm.formHover()" ng-mouseleave="vm.formLeave()" class="ofl-h">
 	<li id="item-form" class="card list-group-item col-lg-12">
 		<form ng-submit="vm.addItem()" class="add-item form-inline item-form" role="form">
 			<div class="name">
-				<input ng-model="vm.newItem.name" type="text" class="input-xl col-lg-12 col-xs-12 input-name" placeholder="Add Item" required>
+				<input ng-model="vm.newItem.name" type="text" class="input-xl col-lg-12 col-xs-12 input-name" placeholder="Add Item" 
+							 uib-typeahead="name for name in vm.cacheList  | limitTo:8" required>
 			</div>
 			<!--
     <div class="form-group">

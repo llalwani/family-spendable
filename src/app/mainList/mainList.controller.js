@@ -15,6 +15,11 @@
 		vm.user = user;
 		vm.shared = itemService.allUsers(user.uid);
 		vm.listCount = 0;
+		vm.cacheList = [];
+		itemService.getCacheList().then(function (data) {
+			vm.cacheList = data;
+		});
+		
 		itemService.getListByUser(user.uid).then(function (data) {
 			vm.sharedFormatted = _.each(vm.shared, function(friend){
 				friend.rank = friend.rank || {};
@@ -24,19 +29,18 @@
 			});
 			$scope.$watch("vm.list.length", function () {
 				vm.listCount = vm.list.length;
-
 			});
 			vm.list = data;
+//			
+//			fixing data
+//			_.each(vm.shared,function(user) {
+//				_.each(user.list,function(item){
+//
+//				});
+//			});
+			
 			_.each(vm.list, function (item) {
 				item.hover = false;
-				//				fixing data
-				if (item.type === 'travelling') {
-					item.type = 'traveling';
-				}
-				delete item['phone'];
-				delete item['notified'];
-				delete item['test'];
-				delete item['showDelete'];
 				vm.list.$save(item);
 				vm.rank.xp += 2;
 				vm.alertSet('xpLog');

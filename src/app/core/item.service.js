@@ -11,6 +11,7 @@
 	function itemService($firebaseArray, $firebaseObject, firebaseDataService, _, $q) {
 
 		var service = {
+			getCacheList: getCacheList,
 			getListByUser: getListByUser,
 			getRankByUser: getRankByUser,
 			Item: Item,
@@ -25,6 +26,16 @@
 		return service;
 
 		////////////
+	
+		function getCacheList() {
+			var defered = $q.defer();
+
+			var arr = $firebaseArray(firebaseDataService.cacheList).$loaded().then(function (response) {
+				defered.resolve(response);
+			});
+
+			return defered.promise;
+		}
 		
 		function getRankByUser(uid) {
 			return $firebaseObject(firebaseDataService.users.child(uid).child('rank'));
