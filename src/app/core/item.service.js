@@ -9,10 +9,9 @@
 	itemService.$inject = ['$firebaseArray', '$firebaseObject', 'firebaseDataService', '_', '$q'];
 
 	function itemService($firebaseArray, $firebaseObject, firebaseDataService, _, $q) {
+		var root = firebaseDataService;
 
 		var service = {
-			getCacheList: getCacheList,
-			getListByUser: getListByUser,
 			getRankByUser: getRankByUser,
 			Item: Item,
 			allUsers: allUsers,
@@ -22,25 +21,14 @@
 			updateProfile: updateProfile,
 			formatScope: formatScope
 		};
-		console.log("All Users", service.allUsers());
 		return service;
 
 		////////////
-	
-		function getCacheList() {
-			var defered = $q.defer();
-
-			var arr = $firebaseArray(firebaseDataService.cacheList).$loaded().then(function (response) {
-				defered.resolve(response);
-			});
-
-			return defered.promise;
-		}
 		
 		function getRankByUser(uid) {
 			return $firebaseObject(firebaseDataService.users.child(uid).child('rank'));
 		}
-		
+
 		function getListByUser(uid) {
 			var defered = $q.defer();
 

@@ -20,9 +20,9 @@
 		};
 	}
 
-	ItemFormController.$inject = ['itemService', 'alertService', '$timeout', '_'];
+	//	ItemFormController.$inject = ['itemService', 'alertService', '$timeout', '_'];
 
-	function ItemFormController(itemService, alertService, $timeout, _) {
+	function ItemFormController(firebaseDataService, itemService, alertService, $timeout, _) {
 		var vm = this;
 		var timer;
 
@@ -33,8 +33,8 @@
 		vm.alert = alertService.alert;
 		vm.alertSet = alertService.set;
 		vm.cacheList = [];
-		
-		itemService.getCacheList().then(function (data) {
+
+		firebaseDataService.getDataByRoot('cacheList').then(function (data) {
 			vm.cacheList = _.pluck(data, '$value');
 		});
 

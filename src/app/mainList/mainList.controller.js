@@ -7,21 +7,23 @@
 		.module('app.mainList')
 		.controller('MainListController', MainListController);
 
-	MainListController.$inject = ['$rootScope', '$scope', 'itemService', 'alertService', 'user', '_'];
+//	MainListController.$inject = ['$rootScope', '$scope', 'itemService', 'alertService', 'user', '_'];
 
-	function MainListController($rootScope, $scope, itemService, alertService, user, _) {
+	function MainListController($rootScope, $scope, firebaseDataService, itemService, alertService, user, _, $log) {
 		var vm = this;
 
 		vm.user = user;
 		vm.shared = itemService.allUsers(user.uid);
-		vm.listCount = 0;
+
 		vm.cacheList = [];
-		itemService.getCacheList().then(function (data) {
+		firebaseDataService.getDataByRoot('cacheList').then(function (data) {
 			vm.cacheList = data;
 		});
-		
-		itemService.getListByUser(user.uid).then(function (data) {
-			vm.sharedFormatted = _.each(vm.shared, function(friend){
+
+		vm.list = [];
+		vm.listCount = 0;
+		firebaseDataService.getDataByUser('list',user.uid).then(function (data) {
+			vm.sharedFormatted = _.each(vm.shared, function (friend) {
 				friend.rank = friend.rank || {};
 				friend.rank.xp = friend.rank.xp || 0;
 				friend.rank.title = friend.rank.title || "Wanderer";
@@ -29,35 +31,39 @@
 			});
 			$scope.$watch("vm.list.length", function () {
 				vm.listCount = vm.list.length;
+				vm.rank.stats = vm.stats();
+				if (vm.stats().scope.avg !== 0) {
+					vm.rank.$save();
+				};
 			});
 			vm.list = data;
-//			
-//			fixing data
-//			_.each(vm.shared,function(user) {
-//				_.each(user.list,function(item){
-//
-//				});
-//			});
-			
+			//			
+			//						fixing data
+			_.each(vm.shared, function (user) {
+				_.each(user.list, function (item) {
+					//			vm.cacheList.$add(item.name);
+				});
+			});
+
 			_.each(vm.list, function (item) {
 				item.hover = false;
 				vm.list.$save(item);
 				vm.rank.xp += 2;
 				vm.alertSet('xpLog');
-				
-				
-				
-				
+
+
+
+
 			});
 		});
 		vm.profile = itemService.getProfileByUser(user.uid);
 		vm.profile.stats = vm.stats;
 		vm.updateProfile = updateProfile;
 		vm.stats = stats;
-		
+
 		vm.formatScope = itemService.formatScope;
-		vm.rank = itemService.getRankByUser(user.uid);
-		vm.rank.xp =  vm.rank.xp || 0;
+		vm.rank = firebaseDataService.getDataByUser("rank",user.uid);
+		vm.rank.xp = vm.rank.xp || 0;
 		vm.alert = alertService.alert;
 		vm.alertSet = alertService.set;
 
@@ -82,8 +88,7 @@
 
 
 
-		console.log("Current User", vm.user);
-		console.log("Rank", vm.rank);
+		$log.debug("Rank", vm.rank);
 		itemService.syncProfile(user.uid, vm.user[vm.user.provider]);
 
 		$rootScope.$on('logout', function () {
@@ -107,11 +112,9 @@
 			vm.rank.speed = '';
 			if (vm.listCount < 2) {
 				vm.rank.title = 'Clueless';
-			}
-			else if (vm.listCount < 4) {
+			} else if (vm.listCount < 4) {
 				vm.rank.title = 'Wanderer';
-			}
-			else {
+			} else {
 				vm.rank.title = 'Princess of Indecision';
 				if (stats.scope.avg >= 1 && stats.scope.avg < 7) {
 					vm.rank.speed = 'Sprinting';
@@ -133,12 +136,10 @@
 				}
 				if (stats.accomplishment.avg > 33 && stats.activity.avg > 33 || stats.accomplishment.avg > 33 && stats.travel.avg > 33) {
 					vm.rank.title = 'Visionary of Adventure';
-				}					
+				}
 				if (stats.activity.avgInt === 33 && stats.traveling.avgInt === 33 && stats.accomplishment.avgInt === 33) {
 					vm.rank.title = 'Jack of All Trades';
 				}
-				vm.rank.stats = stats;
-				if(stats.scope.avg !== 0) {vm.rank.$save()};
 			}
 
 			return stats;
