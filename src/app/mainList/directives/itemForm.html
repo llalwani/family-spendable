@@ -27,7 +27,6 @@
 		padding: 6px 16px !important;
 		font-size: 13px;
 		line-height: 1.846;
-		overflow: hidden;
 	}
 	
 	#item-form .btn-submit {
@@ -38,7 +37,7 @@
 		overflow: hidden;
 	}
 </style>
-<div ng-mouseenter="vm.formHover()" ng-mouseleave="vm.formLeave()" class="ofl-h">
+<div ng-mouseenter="vm.formHover()" ng-mouseleave="vm.formLeave()">
 	<li id="item-form" class="card list-group-item col-lg-12">
 		<form ng-submit="vm.addItem()" class="add-item form-inline item-form" role="form">
 			<div class="name">
